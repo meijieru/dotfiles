@@ -28,6 +28,9 @@
     ~/.config/nvim/init.vim:
       create: true
       path: dotfiles/utils/init.vim
+    ~/.config/matplotlib/matplotlibrc:
+      create: true
+      path: dotfiles/utils/matplotlibrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
