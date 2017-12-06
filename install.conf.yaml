@@ -1,5 +1,6 @@
 - defaults:
     link:
+      create: true
       relink: true
 
 - clean: ['~']
@@ -22,15 +23,9 @@
     ~/.inputrc: dotfiles/utils/inputrc
     ~/.latexmkrc: dotfiles/utils/latexmkrc
     ~/.xmodmap: dotfiles/utils/xmodmap
-    ~/.aria2/aria2.conf:
-      create: true
-      path: dotfiles/utils/aria2.conf
-    ~/.config/nvim/init.vim:
-      create: true
-      path: dotfiles/utils/init.vim
-    ~/.config/matplotlib/matplotlibrc:
-      create: true
-      path: dotfiles/utils/matplotlibrc
+    ~/.aria2/aria2.conf: dotfiles/utils/aria2.conf
+    ~/.config/nvim/init.vim: dotfiles/utils/init.vim
+    ~/.config/matplotlib/matplotlibrc: dotfiles/utils/matplotlibrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
