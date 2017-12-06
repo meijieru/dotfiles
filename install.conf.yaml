@@ -1,0 +1,33 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.zshrc: dotfiles/zsh/zshrc
+    ~/.zshrc.config: dotfiles/zsh/zshrc.config
+    ~/.vimrc: dotfiles/vim/vimrc
+    ~/.vimrc.plugins: dotfiles/vim/vimrc.plugins
+    ~/.gitconfig: dotfiles/git/gitconfig
+    ~/.gitignore: dotfiles/git/gitignore
+    ~/.aliases: dotfiles/profile.d/aliases
+    ~/.exports: dotfiles/profile.d/exports
+    ~/.extra: dotfiles/profile.d/extra
+    ~/.fun: dotfiles/profile.d/fun
+    ~/.functions: dotfiles/profile.d/functions
+    ~/.tmux.conf: dotfiles/utils/tmux.conf
+    ~/.ackrc: dotfiles/utils/ackrc
+    ~/.inputrc: dotfiles/utils/inputrc
+    ~/.latexmkrc: dotfiles/utils/latexmkrc
+    ~/.xmodmap: dotfiles/utils/xmodmap
+    ~/.aria2/aria2.conf:
+      create: true
+      path: dotfiles/utils/aria2.conf
+    ~/.config/nvim/init.vim:
+      create: true
+      path: dotfiles/utils/init.vim
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

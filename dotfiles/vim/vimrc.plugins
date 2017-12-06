@@ -1,0 +1,264 @@
+" ==========================================
+" plugin configure and relative setting
+" ==========================================
+
+"------------------------------------------- begin of configs --------------------------------------------
+
+" package dependence:  ag(he_silver_searcher)
+" python dependence:   pep8, pyflake, yapf
+
+" Install vim-plug if we don't already have it
+if empty(glob("~/.vim/autoload/plug.vim"))
+    " Ensure all needed directories exist  (Thanks @kapadiamush)
+    execute '!mkdir -p ~/.vim/plugged'
+    execute '!mkdir -p ~/.vim/autoload'
+    execute '!mkdir -p ~/.vim/files/backup'
+    execute '!mkdir -p ~/.vim/files/info'
+    execute '!mkdir -p ~/.vim/files/swap'
+    execute '!mkdir -p ~/.vim/files/undo'
+    " Download the actual plugin manager
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+" ################### plugin config ###################
+
+" vim plugin bundle control, command model
+" PlugInstall [name ...] [#threads]	Install plugins
+" PlugUpdate [name ...] [#threads]	Install or update plugins
+" PlugClean[!]	Remove unused directories (bang version will clean without prompt)
+" PlugUpgrade	Upgrade vim-plug itself
+" PlugStatus	Check the status of plugins
+" PlugDiff	Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path]	Generate script for restoring the current snapshot of the plugins
+
+call plug#begin('~/.vim/plugged')
+
+" basic
+Plug 'sheerun/vim-polyglot'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'dccmx/google-style.vim'
+Plug 'jmcantrell/vim-virtualenv', { 'for': ['python'] }
+Plug 'vim-scripts/fcitx.vim', { 'for': ['markdown'] }
+Plug 'w0rp/ale'
+Plug 'scrooloose/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
+Plug 'Chiel92/vim-autoformat'
+Plug 'tpope/vim-fugitive'
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'kshenoy/vim-signature'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" autocomplete
+Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'lervag/vimtex'
+Plug 'mattn/emmet-vim'
+
+" display enhance
+Plug 'luochen1990/rainbow'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'Yggdroot/indentLine'
+
+" navigation
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'simnalamburt/vim-mundo'
+Plug 'junegunn/fzf', { 'dir': '~/.vim/plugged/fzf', 'do': './install --all' }
+
+call plug#end()
+
+" ################### basic ######################
+
+" doxygen
+let g:DoxygenToolkit_authorName="meijieru, meijieru@gmail.com"
+let g:DoxygenToolkit_commentType = "C++"
+
+" syntax checker
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '>'
+let g:ale_linters = {
+  \   'cpp': ['clang'],
+  \   'c': ['clang'],
+  \   'python': ['flake8']
+  \}
+let g:ale_cpp_clang_options = ' -std=c++11 -stdlib=libc++'
+
+function! ToggleErrors()
+  for buffer in tabpagebuflist()
+    if bufname(buffer) == ''
+      " then it should be the loclist window
+      lclose
+      return
+    endif
+  endfor
+  lopen
+endfunction
+nnoremap <Leader>te :call ToggleErrors()<cr>
+
+" nerdcommenter
+let NERDSpaceDelims = 1
+let NERD_cpp_alt_style=1
+
+" auto cd to the current file's dir
+" au BufRead,BufNewFile,BufEnter * cd %:p:h
+
+" ctags
+set tags=./tags;    " search tags file recursively into parent dir
+
+" markdown
+" let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+
+" easymotion
+let g:EasyMotion_smartcase = 1
+"let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+map <Leader><leader>. <Plug>(easymotion-repeat)
+
+" vim-fugitive, git integration
+autocmd QuickFixCmdPost *grep* cwindow
+nnoremap <leader>gg :Ggrep<space>
+
+" vim-autoformat
+let g:formatdef_clangformat = '"clang-format -style=google"'
+let g:formatter_yapf_style = 'google'
+let g:formatters_python = ['yapf']
+
+" auto-pairs
+let g:AutoPairsMapCh = 0 " Interfere with <left>
+
+
+" ################### auto complete ###################
+
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+" let g:ycm_use_ultisnips_completer = 1
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_auto_trigger = 1
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_always_populate_location_list = 1
+
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_goto_buffer_command = 'vertical-split'
+let g:ycm_error_symbol = '✗'
+
+" command alias for youcompleteme
+nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
+nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
+nnoremap <leader>gdo :YcmCompleter GetDoc<CR>
+
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'gitcommit' : 1,}
+
+" Snippets are separated from the engine. Add this if you want them:
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-f>"
+let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
+let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets/UltiSnips"
+let g:ultisnips_python_style = "google"
+map <leader>us :UltiSnipsEdit<CR>
+
+" vimtex
+   " <localleader>lT  |<plug>(vimtex-toc-toggle)|             `n`
+   " <localleader>lY  |<plug>(vimtex-labels-toggle)|          `n`
+   " <localleader>lv  |<plug>(vimtex-view)|                   `n`
+   " <localleader>ll  |<plug>(vimtex-compile)|                `n`
+   " <localleader>lL  |<plug>(vimtex-compile-selected)|       `nx`
+   " <localleader>lc  |<plug>(vimtex-clean)|                  `n`
+   " <localleader>lC  |<plug>(vimtex-clean-full)|             `n`
+" with ycm
+let g:vimtex_fold_enabled = 1
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_latexmk_continuous = 0
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+    \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+    \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+    \ 're!\\hyperref\[[^]]*',
+    \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+    \ 're!\\(include(only)?|input){[^}]*',
+    \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+    \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ 're!\\usepackage(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ 're!\\documentclass(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ 're!\\[A-Za-z]*',
+    \ ]
+
+
+" ################### display enhance ###################"
+
+" rainbow for pairs
+let g:rainbow_active=1
+
+" gruvbox
+let g:gruvbox_italic=1
+let g:gruvbox_improved_warnings=1
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+
+" indentline
+let g:tex_conceal=''    " compatible with latex
+
+
+" ################### navigation ###################
+
+" nerdtree
+map <leader>tr :NERDTreeToggle<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapOpenVSplit = 'v'
+map <Leader>nt <plug>NERDTreeTabsToggle<CR>
+
+" fzf
+let g:fzf_layout = { 'down': '~40%' }
+nnoremap <C-p> :FZF<CR>
+
+" tagbar
+nnoremap <Leader>tb :Tagbar<CR>
+let g:tagbar_autofocus=1
+let g:tagbar_width=25
+let g:tagbar_left=1
+
+" mundo, undo helper
+nnoremap <Leader>un :MundoToggle<cr>
+
+" asyncrun
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+" work with vim-fugitive
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>

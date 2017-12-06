@@ -1,0 +1,13 @@
+##~OH-MY-ZSH~#
+## This section will be uncommented if:
+## a.) You don't change this file and delete this section AND
+## b.) You opt to install Oh-My_ZSH from the bootstratp
+#
+## Path to your oh-my-zsh configuration.
+export ZSH=$HOME/.oh-my-zsh
+
+source $HOME/.zshrc.config
+for file in ~/.{exports,aliases,functions,fun,extra}; do
+    [ -r "$file" ] && source "$file"
+done
+unset file
