@@ -1,8 +1,6 @@
 " change leader
 let mapleader = ' '
 
-syntax on
-
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.plugins"))
   source ~/.vimrc.plugins
@@ -11,6 +9,7 @@ endif
 " ############## General Settings ##################
 set history=2000
 
+syntax on
 filetype on
 filetype indent on
 filetype plugin on

@@ -34,7 +34,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " basic
-Plug 'sheerun/vim-polyglot'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'dccmx/google-style.vim'
@@ -71,6 +70,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'simnalamburt/vim-mundo'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/plugged/fzf', 'do': './install --all' }
+
+" fallback
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
