@@ -1,9 +1,9 @@
 " change leader
 let mapleader = ' '
 
-" install Vundle bundles
-if filereadable(expand("~/.vimrc.plugins"))
-  source ~/.vimrc.plugins
+" install plugins
+if filereadable(expand("$HOME/.vimrc.plugins"))
+  source $HOME/.vimrc.plugins
 endif
 
 " ############## General Settings ##################
@@ -30,6 +30,7 @@ set undoreload=10000        " number of lines to save for undo
 set wildmenu
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.svn,*.tf,*.mdb,*.t7,*.o,*.so,*.npy
 set clipboard^=unnamedplus      " use + register for usual operation
+set completeopt=longest,menu " refer to VimTip1228
 
 " No annoying sound on errors
 set title                " change the terminal's title
@@ -82,15 +83,6 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 " use decimal
 set nrformats=
 
-" https://stackoverflow.com/questions/3712725/can-i-change-vim-completion-preview-window-height
-set previewheight=8
-au BufEnter ?* call PreviewHeightWorkAround()
-func PreviewHeightWorkAround()
-    if &previewwindow
-        exec 'setlocal winheight='.&previewheight
-    endif
-endfunc
-
 " theme
 " set background=dark
 colorscheme gruvbox
@@ -115,13 +107,11 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 " set some keyword to highlight
-if has("autocmd")
-  " Highlight TODO, FIXME, NOTE, BUG etc.
-  if v:version > 701
+augroup highlight_keywords
+    autocmd!
     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|CHANGED\|DONE\|XXX\|HACK\)')
     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\|FIXME\|BUG\)')
-  endif
-endif
+augroup end
 
 
 " ################### FileEncode Settings #################
@@ -138,19 +128,21 @@ set formatoptions+=B " do not add space when merge two chinese line
 
 
 " ################# others ##################
-" autocmd! bufwritepost .vimrc source % " vimrc reload if modified
 
-" auto complete
-" refer to VimTip1228
-set completeopt=longest,menu
+" set up preview
+" https://stackoverflow.com/questions/3712725/can-i-change-vim-completion-preview-window-height
+set previewheight=8
+func PreviewHeightWorkAround()
+    if &previewwindow
+        exec 'setlocal winheight='.&previewheight
+    endif
+endfunc
+augroup set_preview
+    autocmd!
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+    autocmd BufEnter ?* call PreviewHeightWorkAround()
+augroup end
 
-" auto close preview window when leaving insert mode
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-" if this not work ,make sure .viminfo is writable for you
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
 
 " ###################### HotKey Settings ##########################
@@ -178,31 +170,19 @@ vnoremap > >gv
 
 " #################### FileType Settings #########################
 
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
-autocmd FileType cuda set ft=cuda.cpp
-autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai echo hi
-autocmd filetype tex,text,markdown set wrap
+augroup filetype_specify
+    autocmd!
+    autocmd filetype python set tabstop=4 shiftwidth=4 expandtab ai
+    autocmd filetype cuda set ft=cuda.cpp
+    autocmd filetype tex,text,markdown setlocal wrap
+augroup end
 
 
 " ####################### Environment-dependent Settings ############################
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guifont=Monaco:h12
-    set guioptions-=T
-    set guioptions+=e
-    set guioptions-=r
-    set guioptions-=L
-    set guitablabel=%M\ %t
-    set showtabline=1
-    set linespace=2
-    set noimd
-    set t_Co=256
-endif
 
 " nvim related
 if has('nvim')
     set termguicolors
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-    au VimLeave * set guicursor=a:block-blinkon0
+    autocmd VimLeave * set guicursor=a:block-blinkon0
 end
