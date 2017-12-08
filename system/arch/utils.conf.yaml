@@ -1,0 +1,29 @@
+- pacman:
+  - dropbox
+  - ark
+  - dolphin
+  - foxitreader
+  - mendeleydesktop
+  - calibre
+  - shadowsocks-qt5
+  - okular
+  - smplayer
+  - wiznote
+  - libreoffice-fresh
+  - libreoffice-fresh-zh-CN
+  - chromium
+  - kdeconnect
+
+  - autojump
+  - unzip
+  - unrar
+  - zip
+  - perl-rename
+  - aria2
+  - mlocate
+
+  - yakuake
+  - htop
+  - sshfs
+  - tmux
+  - git

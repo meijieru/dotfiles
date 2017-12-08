@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -e
+
+DOTBOT_DIR="dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "${BASEDIR}"
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+# Install system packages
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "system/arch/base.conf.yaml" \
+  --plugin-dir "${BASEDIR}/dotbot-pacaur" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "system/arch/code.conf.yaml" \
+  --plugin-dir "${BASEDIR}/dotbot-pacaur" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "system/arch/utils.conf.yaml" \
+  --plugin-dir "${BASEDIR}/dotbot-pacaur" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "system/arch/aur.conf.yaml" \
+  --plugin-dir "${BASEDIR}/dotbot-pacaur" "${@}"

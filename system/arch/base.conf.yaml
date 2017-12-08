@@ -1,0 +1,38 @@
+- pacman:
+  - yaourt
+  - grub
+  - efibootmgr
+  - os-prober
+  - intel-ucode
+  - openssh
+  - sudo
+  - ntfs-3g
+
+  - xorg-server
+  - xorg-server-xwayland
+  - xorg-xinput
+  - xorg-xmodmap
+  - xf86-video-intel
+  - libva-intel-driver
+  - vulkan-intel
+  - libvdpau-va-gl
+  - gstreamer-vaapi
+  - plasma-meta
+  - plasma-wayland-session
+  - sddm
+  - sddm-kcm
+  - systemd-kcm
+  - xclip
+
+  - zsh
+
+  - adobe-source-han-sans-cn-fonts
+  - adobe-source-han-sans-tw-fonts
+  - adobe-source-code-pro-fonts
+
+  - fcitx
+  - fcitx-qt5
+  - fcitx-gtk3
+  - fcitx-cloudpinyin
+  - fcitx-libpinyin
+  - kcm-fcitx
