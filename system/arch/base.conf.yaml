@@ -7,6 +7,7 @@
   - openssh
   - sudo
   - ntfs-3g
+  - pulseaudio-bluetooth
 
   - xorg-server
   - xorg-server-xwayland
