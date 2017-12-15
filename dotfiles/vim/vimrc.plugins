@@ -52,6 +52,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+Plug 'wakatime/vim-wakatime'
+
 " autocomplete
 Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
 Plug 'SirVer/ultisnips'

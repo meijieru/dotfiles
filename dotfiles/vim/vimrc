@@ -131,7 +131,7 @@ set formatoptions+=B " do not add space when merge two chinese line
 
 " set up preview
 " https://stackoverflow.com/questions/3712725/can-i-change-vim-completion-preview-window-height
-set previewheight=8
+set previewheight=12
 func PreviewHeightWorkAround()
     if &previewwindow
         exec 'setlocal winheight='.&previewheight

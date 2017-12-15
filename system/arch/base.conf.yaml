@@ -7,6 +7,7 @@
   - openssh
   - sudo
   - ntfs-3g
+  - exfat-utils
   - pulseaudio-bluetooth
 
   - xorg-server
@@ -20,6 +21,7 @@
   - gstreamer-vaapi
   - plasma-meta
   - plasma-wayland-session
+  - kde-l10n-zh_cn
   - sddm
   - sddm-kcm
   - systemd-kcm
@@ -30,6 +32,7 @@
   - adobe-source-han-sans-cn-fonts
   - adobe-source-han-sans-tw-fonts
   - adobe-source-code-pro-fonts
+  - noto-fonts-emoji
 
   - fcitx
   - fcitx-qt5

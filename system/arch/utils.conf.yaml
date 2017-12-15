@@ -3,6 +3,7 @@
   - ark
   - dolphin
   - dolphin-plugins
+  - gwenview
   - foxitreader
   - mendeleydesktop
   - calibre
@@ -14,6 +15,7 @@
   - libreoffice-fresh-zh-CN
   - chromium
   - kdeconnect
+  - goldendict
 
   - autojump
   - unzip
