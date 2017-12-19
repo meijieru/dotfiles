@@ -36,3 +36,12 @@
 
 - Swap File
     - no need
+
+- fcitx
+    - add following to `/etc/environment`
+
+        ```
+        export GTK_IM_MODULE=fcitx
+        export QT_IM_MODULE=fcitx
+        export XMODIFIERS=@im=fcitx
+        ```

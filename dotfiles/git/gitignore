@@ -1,19 +1,12 @@
 # Compiled files
 *.pyc
 *.o
+*.so
 
-# Folder view configuration files
-.DS_Store
-Desktop.ini
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
+# ycm
+.ycm_extra_conf.py
 
 # dir
+tmp
 temp
 build
