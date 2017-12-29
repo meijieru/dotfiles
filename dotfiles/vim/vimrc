@@ -84,6 +84,7 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set nrformats=
 
 " theme
+set termguicolors
 " set background=dark
 colorscheme gruvbox
 
@@ -92,9 +93,17 @@ colorscheme gruvbox
 set cursorline
 " set mousehide               " Hide the mouse cursor while typing
 
-let &colorcolumn=join(range(81,999),",")
+" Control column highlight
 highlight ColorColumn ctermbg=235 guibg=#fbf0c1
-let &colorcolumn="80,".join(range(120,999),",")
+function ToggleCC()
+  if &colorcolumn == ''
+    let &colorcolumn=join(range(81,999),",")
+    let &colorcolumn="80,".join(range(120,999),",")
+  else
+    let &colorcolumn=''
+  endif
+endfun
+nnoremap <F5> :call ToggleCC()<CR>
 
 " for error highlight
 highlight clear SpellBad
@@ -182,7 +191,6 @@ augroup end
 
 " nvim related
 if has('nvim')
-    set termguicolors
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
     autocmd VimLeave * set guicursor=a:block-blinkon0
 end

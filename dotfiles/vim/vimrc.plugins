@@ -139,6 +139,10 @@ nnoremap <leader>gg :Ggrep<space>
 let g:formatdef_clangformat = '"clang-format -style=google"'
 let g:formatter_yapf_style = 'google'
 let g:formatters_python = ['yapf']
+" disable fallback
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
 " auto-pairs
 let g:AutoPairsMapCh = 0 " Interfere with <left>
@@ -247,7 +251,6 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'v'
-map <Leader>nt <plug>NERDTreeTabsToggle<CR>
 
 " fzf
 let g:fzf_layout = { 'down': '~40%' }
@@ -264,5 +267,6 @@ nnoremap <Leader>un :MundoToggle<cr>
 
 " asyncrun
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+nnoremap <leader>as :AsyncRun<space>
 " work with vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
