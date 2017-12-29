@@ -6,18 +6,28 @@
 - clean: ['~']
 
 - link:
+    # self
     ~/.dotfiles: ''
+
+    # shell
     ~/.zshrc: dotfiles/zsh/zshrc
     ~/.zshrc.config: dotfiles/zsh/zshrc.config
-    ~/.vimrc: dotfiles/vim/vimrc
-    ~/.vimrc.plugins: dotfiles/vim/vimrc.plugins
-    ~/.gitconfig: dotfiles/git/gitconfig
-    ~/.gitignore: dotfiles/git/gitignore
     ~/.aliases: dotfiles/profile.d/aliases
     ~/.exports: dotfiles/profile.d/exports
     ~/.extra: dotfiles/profile.d/extra
     ~/.fun: dotfiles/profile.d/fun
     ~/.functions: dotfiles/profile.d/functions
+
+    # vim
+    ~/.vimrc: dotfiles/vim/vimrc
+    ~/.vimrc.plugins: dotfiles/vim/vimrc.plugins
+    ~/.oni/config.js: ./dotfiles/vim/config.js
+
+    # git
+    ~/.gitconfig: dotfiles/git/gitconfig
+    ~/.gitignore: dotfiles/git/gitignore
+
+    # utils
     ~/.tmux.conf: dotfiles/utils/tmux.conf
     ~/.ackrc: dotfiles/utils/ackrc
     ~/.inputrc: dotfiles/utils/inputrc

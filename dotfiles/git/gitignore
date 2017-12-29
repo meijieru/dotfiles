@@ -3,8 +3,9 @@
 *.o
 *.so
 
-# ycm
+# project related
 .ycm_extra_conf.py
+.vim
 
 # dir
 tmp

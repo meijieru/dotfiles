@@ -1,3 +1,5 @@
 - pacaur:
   - iio-sensor-proxy
   - papirus-smplayer-theme
+  - cquery-git
+  - python-language-server

@@ -2,6 +2,7 @@
   - neovim
   - python-neovim
   - clang
+  - llvm
   - ctags
   - cmake
 
