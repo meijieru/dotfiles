@@ -242,7 +242,7 @@ if index(g:bundle_groups, 'high') >= 0
     let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
     let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-    let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']  " for universal ctags
+    " let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']  " for universal ctags
     let g:gutentags_auto_add_gtags_cscope = 0
     let g:gutentags_plus_height = 10
     let g:gutentags_plus_nomap = 1
@@ -414,8 +414,10 @@ if index(g:bundle_groups, 'lsp') >= 0
     let g:LanguageClient_diagnosticsEnable = 0
     let g:Lf_UseVersionControlTool = 0
     let g:LanguageClient_rootMarkers = g:root_markers
+
+    let s:cquery_bin_path = $HOME . '/lib/cquery/build/release/bin/cquery'
     let g:LanguageClient_serverCommands = {
-        \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+        \ 'cpp': [s:cquery_bin_path, '--log-file=/tmp/cq.log'],
         \ 'python': ['pyls']
         \ }
     " set omnifunc=LanguageClient#complete

@@ -29,8 +29,10 @@ export MANPAGER="less -X"
 export TERM="xterm-256color"
 
 # Customize to your needs...
-export PATH=$HOME/.local/bin/:$PATH
-export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+export ANACONDA_HOME=$HOME/lib/anaconda
+export PATH=$HOME/.local/bin/:$HOME/lib/anaconda/bin:$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=$HOME/.local/lib:$ANACONDA_HOME/lib:$LD_LIBRARY_PATH
+export CMAKE_PREFIX_PATH=$ANACONDA_HOME:$CMAKE_PREFIX_PATH
 
 export GTAGSLABEL='native-pygments'
 export GTAGSCONF=$HOME/.config/gtags.conf
