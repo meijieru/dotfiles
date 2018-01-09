@@ -3,7 +3,7 @@
   - python-neovim
   - clang
   - llvm
-  - ctags
+  - universal-ctags-git
   - cmake
 
   - gtest
