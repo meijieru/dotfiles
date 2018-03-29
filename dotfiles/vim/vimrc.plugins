@@ -181,8 +181,11 @@ nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gdo :YcmCompleter GetDoc<CR>
 
 let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'gitcommit' : 1,}
+    \ 'tagbar' : 1,
+    \ 'gitcommit' : 1, }
+let g:ycm_semantic_triggers =  {
+    \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+    \ 'cs,lua,javascript': ['re!\w{2}'], }
 
 " Snippets are separated from the engine. Add this if you want them:
 let g:UltiSnipsExpandTrigger       = "<tab>"
