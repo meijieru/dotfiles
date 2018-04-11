@@ -132,8 +132,20 @@ map <Leader><leader>l <Plug>(easymotion-lineforward)
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
 " vim-fugitive, git integration
+function! MyGrep() abort
+    let l:prompt = 'vimgrep: '
+    let l:command_template = ':silent vimgrep /%s/j %%'
+    if exists(':Ggrep')
+        let l:prompt = 'Ggrep: '
+        let l:command_template = ':silent Ggrep! %s'
+    endif
+    let l:pattern = input(l:prompt, expand('<cword>'))
+    let l:command = printf(l:command_template, l:pattern)
+    execute l:command
+endfunction
+
 autocmd QuickFixCmdPost *grep* cwindow
-nnoremap <leader>gg :Ggrep<space>
+nnoremap <leader>gg :call MyGrep()<cr>
 
 " vim-autoformat
 let g:formatdef_clangformat = '"clang-format -style=google"'
