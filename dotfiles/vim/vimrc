@@ -152,6 +152,13 @@ augroup set_preview
     autocmd BufEnter ?* call PreviewHeightWorkAround()
 augroup end
 
+" auto jump to last modified position
+augroup aux
+    autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   execute "normal! g`\"" |
+    \ endif
+augroup end
 
 
 " ###################### HotKey Settings ##########################

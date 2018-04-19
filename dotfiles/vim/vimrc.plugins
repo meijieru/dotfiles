@@ -254,6 +254,7 @@ let g:airline_powerline_fonts = 1
 
 " indentline
 let g:tex_conceal=''    " compatible with latex
+let g:indentLine_concealcursor=0  " work with cursorline
 
 
 " ################### navigation ###################
