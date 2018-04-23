@@ -91,10 +91,15 @@ colorscheme gruvbox
 " visual enhance
 " set cursorcolumn
 set cursorline
+set noshowmode                " For echodoc
 " set mousehide               " Hide the mouse cursor while typing
 
 " Control column highlight
-highlight ColorColumn ctermbg=235 guibg=#fbf0c1
+if &background ==? 'dark'
+    echo "FIXME: dark color column"
+else
+    highlight ColorColumn ctermbg=235 guibg=#fbf0c1
+endif
 function ToggleCC()
   if &colorcolumn == ''
     let &colorcolumn=join(range(81,999),",")
@@ -103,7 +108,7 @@ function ToggleCC()
     let &colorcolumn=''
   endif
 endfun
-nnoremap <F5> :call ToggleCC()<CR>
+nnoremap <F12> :call ToggleCC()<CR>
 
 " for error highlight
 highlight clear SpellBad

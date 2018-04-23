@@ -44,7 +44,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 Plug 'jiangmiao/auto-pairs'
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
+Plug 'sgur/vim-textobj-parameter'
 
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-surround'
@@ -55,6 +62,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'wakatime/vim-wakatime'
 
 " autocomplete
+Plug 'Shougo/echodoc.vim'
 Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -71,7 +79,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'simnalamburt/vim-mundo'
-Plug 'junegunn/fzf', { 'dir': '~/.vim/plugged/fzf', 'do': './install --all' }
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " fallback
 Plug 'sheerun/vim-polyglot'
@@ -79,6 +87,8 @@ Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " ################### basic ######################
+
+let g:root_markers = ['.svn', '.git', '.root', '.project'] 
 
 " doxygen
 let g:DoxygenToolkit_authorName="meijieru, meijieru@gmail.com"
@@ -92,7 +102,11 @@ let g:ale_linters = {
   \   'c': ['clang'],
   \   'python': ['flake8']
   \}
-let g:ale_cpp_clang_options = ' -std=c++11 -stdlib=libc++'
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_cpp_clang_options = '-Wall -std=c99 '
+let g:ale_cpp_clang_options = '-Wall -std=c++11 '
 
 function! ToggleErrors()
   for buffer in tabpagebuflist()
@@ -167,17 +181,16 @@ let g:ycm_key_list_select_completion=['<c-n>']
 let g:ycm_key_list_previous_completion=['<c-p>']
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
-" let g:ycm_use_ultisnips_completer = 1
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_use_ultisnips_completer = 0
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_auto_trigger = 1
-let g:ycm_show_diagnostics_ui = 1
+let g:ycm_show_diagnostics_ui = 0
 let g:ycm_always_populate_location_list = 1
 
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_goto_buffer_command = 'vertical-split'
@@ -198,6 +211,8 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_semantic_triggers =  {
     \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
     \ 'cs,lua,javascript': ['re!\w{2}'], }
+
+let g:echodoc#enable_at_startup = 1
 
 " Snippets are separated from the engine. Add this if you want them:
 let g:UltiSnipsExpandTrigger       = "<tab>"
@@ -268,9 +283,30 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'v'
 
-" fzf
-let g:fzf_layout = { 'down': '~40%' }
-nnoremap <C-p> :FZF<CR>
+" LeaderF
+let g:Lf_ShortcutF = '<leader>ff'
+let g:Lf_ShortcutB = '<leader>fb'
+nnoremap <leader>fm :LeaderfMru<cr>
+nnoremap <leader>fc :LeaderfFunction<cr>
+nnoremap <leader>ft :LeaderfTag<cr>
+
+let g:Lf_RootMarkers = g:root_markers
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowHeight = 0.35
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_StlColorscheme = 'default'
+
+let g:Lf_NormalMap = {
+   \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>'],
+   \            ["<F6>", ':exec g:Lf_py "fileExplManager.quit()"<CR>'] ],
+   \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<CR>'],
+   \            ["<F6>", ':exec g:Lf_py "bufExplManager.quit()"<CR>'] ],
+   \ "Mru":    [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<CR>']],
+   \ "Tag":    [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<CR>']],
+   \ "Function":    [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<CR>']],
+   \ "Colorscheme":    [["<ESC>", ':exec g:Lf_py "colorschemeExplManager.quit()"<CR>']],
+   \ }
 
 " tagbar
 nnoremap <Leader>tb :Tagbar<CR>
@@ -283,7 +319,28 @@ let g:tagbar_map_showproto='K'
 nnoremap <Leader>un :MundoToggle<cr>
 
 " asyncrun
+function! CmakeBuild()
+    let l:dst = asyncrun#get_root('%')
+    let l:num_cpu = system('grep -c ^processor /proc/cpuinfo')
+    let l:num_cpu_used = max([l:num_cpu - 2, 1])
+    call mkdir(l:dst . '/build', 'p', '0775')
+    let l:command = 'AsyncRun -cwd=<root>/build cmake ..; make -j' . l:num_cpu_used
+    execute l:command
+endfunction
+
+let g:asyncrun_rootmarks = g:root_markers + ['_darcs', 'build.xml'] 
+let g:asyncrun_open = 10
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 nnoremap <leader>as :AsyncRun<space>
+
+" F5：project compile
+" F6：project test
+" F7：project run
+" F10：toggle quickfix
+nnoremap <silent> <F5> :call CmakeBuild()<cr>
+nnoremap <silent> <F6> :AsyncRun -cwd=<root>/build -raw make runtest <cr>
+nnoremap <silent> <F7> :AsyncRun -cwd=<root>/build -raw make run <cr>
+nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
+
 " work with vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
