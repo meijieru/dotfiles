@@ -63,6 +63,7 @@ Plug 'wakatime/vim-wakatime'
 
 " autocomplete
 Plug 'Shougo/echodoc.vim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -127,8 +128,20 @@ let NERD_cpp_alt_style=1
 " auto cd to the current file's dir
 " au BufRead,BufNewFile,BufEnter * cd %:p:h
 
-" ctags
-set tags=./tags;    " search tags file recursively into parent dir
+" tags
+set tags=./.tags;,.tags
+let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_project_root = g:root_markers
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
 
 " markdown
 " let g:vim_markdown_folding_disabled=1
@@ -294,8 +307,9 @@ let g:Lf_RootMarkers = g:root_markers
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowHeight = 0.35
 let g:Lf_CacheDirectory = expand('~/.vim/cache')
-let g:Lf_ShowRelativePath = 0
+let g:Lf_ShowRelativePath = 1
 let g:Lf_StlColorscheme = 'default'
+let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 
 let g:Lf_NormalMap = {
    \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>'],

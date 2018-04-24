@@ -96,9 +96,9 @@ set noshowmode                " For echodoc
 
 " Control column highlight
 if &background ==? 'dark'
-    echo "FIXME: dark color column"
+    highlight ColorColumn ctermbg=234 guibg=#1d2021
 else
-    highlight ColorColumn ctermbg=235 guibg=#fbf0c1
+    highlight ColorColumn ctermbg=230 guibg=#f9f5d7
 endif
 function ToggleCC()
   if &colorcolumn == ''
@@ -108,7 +108,7 @@ function ToggleCC()
     let &colorcolumn=''
   endif
 endfun
-nnoremap <F12> :call ToggleCC()<CR>
+nnoremap <F1> :call ToggleCC()<CR>
 
 " for error highlight
 highlight clear SpellBad
