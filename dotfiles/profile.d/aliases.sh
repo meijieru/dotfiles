@@ -29,6 +29,7 @@ alias tmux='tmux -2'
 alias matlab='matlab -nodesktop -nosplash'
 alias vim='nvim'
 alias vi='nvim'
+alias proxychains='proxychains -q'
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'

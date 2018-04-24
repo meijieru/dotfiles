@@ -1,6 +1,6 @@
 source $HOME/.zshrc.config
 
-for file in ~/.{exports,aliases,functions,fun,extra}; do
+for file in ~/.{exports,aliases,functions,fun,extra}.sh; do
     [ -r "$file" ] && source "$file"
 done
 unset file

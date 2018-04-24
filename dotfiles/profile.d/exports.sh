@@ -24,15 +24,9 @@ export MANPAGER="less -X"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# spark
-export SPARK_HOME=$HOME/lib/spark
-
 # term
 export TERM="xterm-256color"
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PYTHONPATH=$HOME/lib/caffe/python:$PYTHONPATH:$HOME/lib/spark/python:$HOME/lib/spark/python/lib/py4j-0.10.1-src.zip
-export QSYS_ROOTDIR="/home/meijieru/lib/quartus/quartus/sopc_builder/bin"
-
-. $HOME/lib/torch/install/bin/torch-activate
+export PYTHONPATH=$PYTHONPATH

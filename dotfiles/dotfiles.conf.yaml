@@ -12,16 +12,15 @@
     # shell
     ~/.zshrc: dotfiles/zsh/zshrc
     ~/.zshrc.config: dotfiles/zsh/zshrc.config
-    ~/.aliases: dotfiles/profile.d/aliases
-    ~/.exports: dotfiles/profile.d/exports
-    ~/.extra: dotfiles/profile.d/extra
-    ~/.fun: dotfiles/profile.d/fun
-    ~/.functions: dotfiles/profile.d/functions
+    ~/.aliases.sh: dotfiles/profile.d/aliases.sh
+    ~/.exports.sh: dotfiles/profile.d/exports.sh
+    ~/.extra.sh: dotfiles/profile.d/extra.sh
+    ~/.functions.sh: dotfiles/profile.d/functions.sh
 
     # vim
     ~/.vimrc: dotfiles/vim/vimrc
     ~/.vimrc.plugins: dotfiles/vim/vimrc.plugins
-    ~/.oni/config.js: ./dotfiles/vim/config.js
+    ~/.config/oni/config.js: ./dotfiles/vim/config.js
 
     # git
     ~/.gitconfig: dotfiles/git/gitconfig
