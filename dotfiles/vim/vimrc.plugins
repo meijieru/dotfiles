@@ -167,6 +167,9 @@ function! MyGrep() abort
         let l:command_template = ':silent Ggrep! %s'
     endif
     let l:pattern = input(l:prompt, expand('<cword>'))
+    if (empty(l:pattern))
+        return
+    endif
     let l:command = printf(l:command_template, l:pattern)
     execute l:command
 endfunction
@@ -304,7 +307,7 @@ nnoremap <leader>fc :LeaderfFunction<cr>
 nnoremap <leader>ft :LeaderfTag<cr>
 
 let g:Lf_RootMarkers = g:root_markers
-let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WorkingDirectoryMode = 'c'  " FIXME(meijieru): bug from leaderf
 let g:Lf_WindowHeight = 0.35
 let g:Lf_CacheDirectory = expand('~/.vim/cache')
 let g:Lf_ShowRelativePath = 1
@@ -338,8 +341,7 @@ function! CmakeBuild()
     let l:num_cpu = system('grep -c ^processor /proc/cpuinfo')
     let l:num_cpu_used = max([l:num_cpu - 2, 1])
     call mkdir(l:dst . '/build', 'p', '0775')
-    let l:command = 'AsyncRun -cwd=<root>/build cmake ..; make -j' . l:num_cpu_used
-    execute l:command
+    execute 'AsyncRun -cwd=<root>/build cmake ..; make -j' . l:num_cpu_used
 endfunction
 
 let g:asyncrun_rootmarks = g:root_markers + ['_darcs', 'build.xml'] 
