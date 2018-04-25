@@ -1,12 +1,17 @@
 " change leader
-let mapleader = ' '
+let g:mapleader = ' '
+
+" global var
+let g:root_markers = ['.svn', '.git', '.root', '.project'] 
+let g:vim_config_root = fnamemodify(expand('<sfile>'), ':h')
+let g:runtime_root = expand('~/.local/share/nvim/site/')
+let g:bundle_groups = ['basic', 'ycm', 'lsp']
 
 " install plugins
-if filereadable(expand("$HOME/.vimrc.plugins"))
-  source $HOME/.vimrc.plugins
-endif
+let s:plugin_config_file = g:vim_config_root . '/plugin.vim'
+execute 'source' . s:plugin_config_file
 
-" ############## General Settings ##################
+" {{{ General Settings
 set history=2000
 
 syntax on
@@ -17,14 +22,9 @@ filetype plugin on
 set autoread          " auto reload the file when the file is modified
 set shortmess=atI       " start-up information
 
-set nocompatible
 set backup
 set backupext=.bak
-set backupdir=$HOME/.vim/files/backup
-set directory   =$HOME/.vim/files/swap/
-set viminfo='100,n$HOME/.vim/files/info/viminfo
 set undofile                " So is persistent undo ...
-set undodir=$HOME/.vim/files/undo
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 set wildmenu
@@ -32,11 +32,17 @@ set wildignore+=*.swp,*.bak,*.pyc,*.class,*.svn,*.tf,*.mdb,*.t7,*.o,*.so,*.npy
 set clipboard^=unnamedplus      " use + register for usual operation
 set completeopt=longest,menu " refer to VimTip1228
 
+let &backupdir = g:runtime_root . 'files/backup'
+let &directory = g:runtime_root . 'files/swap/'
+let &viminfo = '100,n' . g:runtime_root . 'files/info/viminfo'
+let &undodir = g:runtime_root . '/files/undo'
+
+
 " No annoying sound on errors
 set title                " change the terminal's title
 set novisualbell         " don't beep
 set noerrorbells         " don't beep
-set tm=500
+set timeoutlen=500
 
 " For regular expressions turn magic on
 set magic
@@ -45,8 +51,9 @@ set magic
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" ################# Display Settings ##################
-" general
+" }}} General Settings
+
+" {{{ Display Settings
 set ruler
 set showcmd
 set showmode
@@ -101,9 +108,9 @@ else
     highlight ColorColumn ctermbg=230 guibg=#f9f5d7
 endif
 function ToggleCC()
-  if &colorcolumn == ''
-    let &colorcolumn=join(range(81,999),",")
-    let &colorcolumn="80,".join(range(120,999),",")
+  if &colorcolumn ==# ''
+    let &colorcolumn=join(range(81,999),',')
+    let &colorcolumn='80,'.join(range(120,999),',')
   else
     let &colorcolumn=''
   endif
@@ -127,21 +134,24 @@ augroup highlight_keywords
     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\|FIXME\|BUG\)')
 augroup end
 
+" }}} Display Settings
 
-" ################### FileEncode Settings #################
+" {{{ FileEncode Settings
+
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set helplang=cn
 set termencoding=utf-8
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
 set formatoptions+=m
 set formatoptions+=B " do not add space when merge two chinese line
 
+" }}} FileEncode Settings
 
-" ################# others ##################
+" {{{ Others 
 
 " set up preview
 " https://stackoverflow.com/questions/3712725/can-i-change-vim-completion-preview-window-height
@@ -165,8 +175,9 @@ augroup aux
     \ endif
 augroup end
 
+" }}} Others 
 
-" ###################### HotKey Settings ##########################
+" {{{ HotKey Settings 
 
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
@@ -188,8 +199,9 @@ vnoremap > >gv
 " vnoremap <silent> p p`]
 " nnoremap <silent> p p`]
 
+" }}} HotKey Settings 
 
-" #################### FileType Settings #########################
+" {{{ FileType Settings
 
 augroup filetype_specify
     autocmd!
@@ -198,11 +210,14 @@ augroup filetype_specify
     autocmd filetype tex,text,markdown setlocal wrap
 augroup end
 
+" }}} FileType Settings
 
-" ####################### Environment-dependent Settings ############################
+" {{{ Environment-dependent Settings
 
 " nvim related
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
     autocmd VimLeave * set guicursor=a:block-blinkon0
 end
+
+" }}} Environment-dependent Settings

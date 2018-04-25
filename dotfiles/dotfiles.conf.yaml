@@ -18,8 +18,7 @@
     ~/.functions.sh: dotfiles/profile.d/functions.sh
 
     # vim
-    ~/.vimrc: dotfiles/vim/vimrc
-    ~/.vimrc.plugins: dotfiles/vim/vimrc.plugins
+    ~/.config/nvim: dotfiles/vim/nvim
     ~/.config/oni/config.js: ./dotfiles/vim/config.js
 
     # git
@@ -36,7 +35,6 @@
     ~/.xmodmap: dotfiles/utils/xmodmap
     ~/.wakatime.cfg: dotfiles/utils/wakatime.cfg
     ~/.aria2/aria2.conf: dotfiles/utils/aria2.conf
-    ~/.config/nvim/init.vim: dotfiles/utils/init.vim
     ~/.config/matplotlib/matplotlibrc: dotfiles/utils/matplotlibrc
     ~/.config/flake8: dotfiles/utils/flake8
     ~/.config/fontconfig/fonts.conf: dotfiles/utils/fonts.conf
