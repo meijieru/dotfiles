@@ -30,6 +30,8 @@ alias matlab='matlab -nodesktop -nosplash'
 alias vim='nvim'
 alias vi='nvim'
 alias proxychains='proxychains -q'
+alias copytoclipboard='xclip -selection c'
+alias copyfromclipboard='xclip -o -selection c'
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
