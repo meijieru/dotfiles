@@ -5,7 +5,7 @@ let g:mapleader = ' '
 let g:root_markers = ['.svn', '.git', '.root', '.project'] 
 let g:vim_config_root = fnamemodify(expand('<sfile>'), ':h')
 let g:runtime_root = expand('~/.local/share/nvim/site/')
-let g:bundle_groups = ['basic', 'ycm', 'lsp']
+let g:bundle_groups = ['simple', 'basic', 'high', 'ale', 'ycm', 'vcs', 'airline']
 
 " install plugins
 let s:plugin_config_file = g:vim_config_root . '/plugin.vim'
@@ -98,7 +98,6 @@ colorscheme gruvbox
 " visual enhance
 " set cursorcolumn
 set cursorline
-set noshowmode                " For echodoc
 " set mousehide               " Hide the mouse cursor while typing
 
 " Control column highlight
