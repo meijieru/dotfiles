@@ -8,7 +8,7 @@ let g:runtime_root = expand('~/.local/share/nvim/site/')
 let g:bundle_groups = ['simple', 'basic', 'high', 'ale', 'ycm', 'vcs', 'airline']
 
 " install plugins
-let s:plugin_config_file = g:vim_config_root . '/plugin.vim'
+let s:plugin_config_file = g:vim_config_root . '/bundle.vim'
 execute 'source' . s:plugin_config_file
 
 " {{{ General Settings

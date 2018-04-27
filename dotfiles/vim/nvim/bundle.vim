@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " Install vim-plug if we don't already have it
 if empty(glob(g:runtime_root . 'autoload/plug.vim'))
     " Ensure all needed directories exist  (Thanks @kapadiamush)
@@ -200,7 +202,7 @@ if index(g:bundle_groups, 'high') >= 0
     let g:UltiSnipsSnippetDirectories  = ['UltiSnips', 'mysnippets']
     let g:UltiSnipsSnippetsDir = g:runtime_root . 'plugged/vim-snippets/UltiSnips'
     let g:ultisnips_python_style = 'google'
-    let g:UltiSnipsEditSplit="vertical"
+    let g:UltiSnipsEditSplit = 'vertical'
     map <leader>us :UltiSnipsEdit<CR>
 
     " vimtex
@@ -302,10 +304,40 @@ endif
 
 " {{{ bundle group: lsp
 if index(g:bundle_groups, 'lsp') >= 0
-    " TODO
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+
+    set hidden " Required for operations modifying multiple buffers like rename.
+    let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_serverCommands = {
+        \ 'cpp': ['clangd'],
+        \ 'python': ['pyls']
+        \ }
+    set omnifunc=LanguageClient#complete
+
+    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> <leader>gr :call LanguageClient_textDocument_references()<CR>
 endif
 " }}} bundle group: lsp
-"
+
+" {{{ bundle group: deoplete
+if index(g:bundle_groups, 'deoplete') >= 0
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+
+    " deoplete
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#complete_method = 'omnifunc'
+    inoremap <expr> <c-space>  deoplete#mappings#manual_complete()
+endif
+" }}} bundle group: deoplete
+
 " {{{ bundle group: vcs
 if index(g:bundle_groups, 'vcs') >= 0
     Plug 'tpope/vim-fugitive'
@@ -331,34 +363,11 @@ if index(g:bundle_groups, 'airline') >= 0
     let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 endif
 
-function! ToggleLocalList()
-    for l:buffer in tabpagebuflist()
-        if bufname(l:buffer) ==# '' " then it should be the loclist window
-            lclose
-            return
-        endif
-    endfor
-    lopen
-endfunction
-nnoremap <Leader>te :call ToggleLocalList()<cr>
+nnoremap <Leader>te :call auxlib#ToggleLocalList()<cr>
 
 augroup grep
     autocmd!
     autocmd QuickFixCmdPost *grep* cwindow
 augroup end
-function! MyGrep() abort
-    let l:prompt = 'vimgrep: '
-    let l:command_template = ':silent vimgrep /%s/j %%'
-    if exists(':Ggrep')
-        let l:prompt = 'Ggrep: '
-        let l:command_template = ':silent Ggrep! %s'
-    endif
-    let l:pattern = input(l:prompt, expand('<cword>'))
-    if (empty(l:pattern))
-        return
-    endif
-    let l:command = printf(l:command_template, l:pattern)
-    execute l:command
-endfunction
-nnoremap <leader>gg :call MyGrep()<cr>
+nnoremap <leader>gg :call auxlib#MyGrep()<cr>
 " }}} Post process
