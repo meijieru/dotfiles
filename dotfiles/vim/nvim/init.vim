@@ -19,8 +19,8 @@ filetype on
 filetype indent on
 filetype plugin on
 
-set autoread          " auto reload the file when the file is modified
-set shortmess=atI       " start-up information
+set autoread                " auto reload the file when the file is modified
+set shortmess=atI           " start-up information
 
 set backup
 set backupext=.bak
@@ -29,7 +29,7 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 set wildmenu
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.svn,*.tf,*.mdb,*.t7,*.o,*.so,*.npy
-set clipboard^=unnamedplus      " use + register for usual operation
+set clipboard^=unnamedplus   " use + register for usual operation
 set completeopt=longest,menu " refer to VimTip1228
 
 let &backupdir = g:runtime_root . 'files/backup'
@@ -56,7 +56,6 @@ set whichwrap+=<,>,h,l
 " {{{ Display Settings
 set ruler
 set showcmd
-set showmode
 set number
 set nowrap
 set scrolloff=5 " when scroll the screen, the lines remain to show
@@ -168,6 +167,7 @@ augroup end
 
 " auto jump to last modified position
 augroup aux
+    autocmd!
     autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   execute "normal! g`\"" |
@@ -204,9 +204,11 @@ vnoremap > >gv
 
 augroup filetype_specify
     autocmd!
-    autocmd filetype python set tabstop=4 shiftwidth=4 expandtab ai
-    autocmd filetype cuda set ft=cuda.cpp
+    autocmd filetype python setlocal tabstop=4 shiftwidth=4 expandtab ai
+    autocmd filetype cuda setlocal ft=cuda.cpp
+    autocmd filetype plaintex,latex setlocal ft=tex
     autocmd filetype tex,text,markdown setlocal wrap
+    autocmd filetype cpp,c setlocal nowrap
 augroup end
 
 " }}} FileType Settings

@@ -197,9 +197,10 @@ if index(g:bundle_groups, 'high') >= 0
     let g:UltiSnipsExpandTrigger       = '<tab>'
     let g:UltiSnipsJumpForwardTrigger  = '<c-b>'
     let g:UltiSnipsJumpBackwardTrigger = '<c-f>'
-    let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
+    let g:UltiSnipsSnippetDirectories  = ['UltiSnips', 'mysnippets']
     let g:UltiSnipsSnippetsDir = g:runtime_root . 'plugged/vim-snippets/UltiSnips'
     let g:ultisnips_python_style = 'google'
+    let g:UltiSnipsEditSplit="vertical"
     map <leader>us :UltiSnipsEdit<CR>
 
     " vimtex
@@ -266,7 +267,7 @@ if index(g:bundle_groups, 'ycm') >= 0
     let g:ycm_key_list_previous_completion=['<c-p>']
     let g:ycm_complete_in_comments = 1
     let g:ycm_complete_in_strings = 1
-    let g:ycm_use_ultisnips_completer = 0
+    let g:ycm_use_ultisnips_completer = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 1
     let g:ycm_collect_identifiers_from_tags_files = 1
     let g:ycm_show_diagnostics_ui = 0
@@ -342,6 +343,7 @@ endfunction
 nnoremap <Leader>te :call ToggleLocalList()<cr>
 
 augroup grep
+    autocmd!
     autocmd QuickFixCmdPost *grep* cwindow
 augroup end
 function! MyGrep() abort
