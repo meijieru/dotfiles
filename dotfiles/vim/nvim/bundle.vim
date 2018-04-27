@@ -16,16 +16,23 @@ call plug#begin(g:runtime_root . 'plugged')
 if index(g:bundle_groups, 'simple') >= 0
 	Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
+
     Plug 'morhetz/gruvbox'
+    Plug 'mhartington/oceanic-next'
+    Plug 'joshdick/onedark.vim'
+
     Plug 'jiangmiao/auto-pairs'
     Plug 'godlygeek/tabular'
     Plug 'easymotion/vim-easymotion'
     Plug 'luochen1990/rainbow'
     Plug 'Yggdroot/indentLine'
 
-    " gruvbox
-    let g:gruvbox_italic=0
-    let g:gruvbox_improved_warnings=1
+    " colorscheme
+    let g:gruvbox_italic = 1
+    let g:gruvbox_improved_warnings = 1
+    let g:oceanic_next_terminal_bold = 1
+    let g:oceanic_next_terminal_italic = 1
+    let g:onedark_terminal_italics = 1
 
     " auto-pairs
     let g:AutoPairsMapCh = 0 " Interfere with <left>
@@ -220,8 +227,6 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'tpope/vim-projectionist'
     Plug 'tpope/vim-speeddating'
     Plug 'wsdjeg/FlyGrep.vim'
-    Plug 'mhartington/oceanic-next'
-    Plug 'joshdick/onedark.vim'
     Plug 'asins/vim-dict'
 endif
 " }}} bundle group: optional
@@ -243,8 +248,8 @@ if index(g:bundle_groups, 'ale') >= 0
     Plug 'w0rp/ale'
 
     " syntax checker
-    let g:ale_sign_error = '✗'
-    let g:ale_sign_warning = '>'
+    let g:ale_sign_error = '✖'
+    let g:ale_sign_warning = '⚠'
     let g:ale_linters = {
     \   'cpp': ['clang'],
     \   'c': ['clang'],
@@ -307,7 +312,9 @@ if index(g:bundle_groups, 'lsp') >= 0
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 
     set hidden " Required for operations modifying multiple buffers like rename.
-    let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_diagnosticsList = 'Location'
+    let g:LanguageClient_diagnosticsEnable = 0
+    let g:LanguageClient_rootMarkers = g:root_markers
     let g:LanguageClient_serverCommands = {
         \ 'cpp': ['clangd'],
         \ 'python': ['pyls']
@@ -352,6 +359,7 @@ endif
 " {{{ bundle group: airline
 if index(g:bundle_groups, 'airline') >= 0
     Plug 'vim-airline/vim-airline'
+
     let g:airline_powerline_fonts = 1
 endif
 " }}} bundle group: airline
