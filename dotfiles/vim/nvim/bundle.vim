@@ -3,7 +3,7 @@ scriptencoding utf-8
 " Install vim-plug if we don't already have it
 if empty(glob(g:runtime_root . 'autoload/plug.vim'))
     " Ensure all needed directories exist  (Thanks @kapadiamush)
-    for s:dir in [ 'plugged', 'autoload', 'files/backup', 'files/info', 'files/swap', 'files/undo', 'cache/tags']
+    for s:dir in [ 'plugged', 'autoload', 'files/backup', 'files/info', 'files/swap', 'files/undo', 'cache/tags', 'log']
         execute '!mkdir -p ' . g:runtime_root . s:dir
     endfor
     " Download the actual plugin manag'er
@@ -259,9 +259,7 @@ if index(g:bundle_groups, 'ale') >= 0
     let g:ale_lint_on_text_changed = 'normal'
     let g:ale_lint_on_insert_leave = 1
 
-    " TODO(meijieru): parse ycm_config
-    let g:ale_cpp_clang_options = '-Wall -std=c99 '
-    let g:ale_cpp_clang_options = '-Wall -std=c++11 '
+    let g:ale_cpp_clang_options = '-std=c++11 -Wall'
 endif
 " }}} bundle group: ale
 
@@ -371,11 +369,19 @@ if index(g:bundle_groups, 'airline') >= 0
     let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 endif
 
-nnoremap <Leader>te :call auxlib#ToggleLocalList()<cr>
+" {{{ bundle group: auxlib
+if index(g:bundle_groups, 'auxlib') >= 0
+    let g:auxlib#enable_at_startup = 1
+    let g:auxlib#_logging = {'level': 'info', 'logfile': g:runtime_root . 'log/auxlib.log', 'overwrite': 1}
 
-augroup grep
-    autocmd!
-    autocmd QuickFixCmdPost *grep* cwindow
-augroup end
-nnoremap <leader>gg :call auxlib#MyGrep()<cr>
+    augroup grep
+        autocmd!
+        autocmd QuickFixCmdPost *grep* cwindow
+    augroup end
+
+    nnoremap <leader>gg :call auxlib#mygrep()<cr>
+    nnoremap <Leader>te :call auxlib#toggle_loclist()<cr>
+endif
+" }}} bundle group: auxlib
+
 " }}} Post process

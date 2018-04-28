@@ -1,4 +1,4 @@
-function! auxlib#MyGrep() abort
+function! auxlib#mygrep() abort
     let l:prompt = 'vimgrep: '
     let l:command_template = ':silent vimgrep /%s/j %%'
     if exists(':Ggrep')
@@ -13,7 +13,7 @@ function! auxlib#MyGrep() abort
     execute l:command
 endfunction
 
-function! auxlib#ToggleLocalList()
+function! auxlib#toggle_loclist()
     for l:buffer in tabpagebuflist()
         if bufname(l:buffer) ==# '' " then it should be the loclist window
             lclose

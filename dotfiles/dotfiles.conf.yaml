@@ -38,6 +38,7 @@
     ~/.config/matplotlib/matplotlibrc: dotfiles/utils/matplotlibrc
     ~/.config/flake8: dotfiles/utils/flake8
     ~/.config/fontconfig/fonts.conf: dotfiles/utils/fonts.conf
+    ~/.ycm_extra_conf.py: dotfiles/utils/ycm_extra_conf.py
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
