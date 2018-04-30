@@ -29,8 +29,6 @@ if platform.system() == 'Linux':
     sys_cpp_dir = '/usr/include/c++'
     cpp_include_dir = sorted(os.listdir(sys_cpp_dir))[-1]
     flags.extend(['-isystem', os.path.join(sys_cpp_dir, cpp_include_dir)])
-else:
-    raise NotImplementedError('Not linux')
 
 # Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
 # which is required for compiling the standard library, and to 'c++11' for older

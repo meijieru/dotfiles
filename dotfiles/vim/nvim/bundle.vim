@@ -37,6 +37,11 @@ if index(g:bundle_groups, 'simple') >= 0
 
     " auto-pairs
     let g:AutoPairsMapCh = 0 " Interfere with <left>
+    augroup auto_pair_clean
+        autocmd!
+        autocmd VimEnter,BufEnter,BufWinEnter * silent! iunmap <buffer> <M-">
+    augroup end
+
 
     " tabular
     nnoremap <space>a= :Tabularize /=<CR>

@@ -47,17 +47,15 @@ class AuxlibHandlers(object):
     ]:
         vars()[func_name] = log_method(func_name)
 
-    @neovim.autocmd(
-        'filetype', pattern='cpp', sync=False, eval='g:ale_cpp_clang_options')
-    def set_ale_cpp_options(self, ale_cpp_global_flags):
+    @neovim.autocmd('filetype', pattern='cpp', sync=False, eval='@%')
+    def set_ale_cpp_options(self, buf_name):
         ycm_marker = '.ycm_extra_conf.py'
-        ancestor = utils.nearest_ancestor([ycm_marker], os.getcwd())
+        file_path = os.path.join(os.getcwd(), buf_name)
+        file_dir = os.path.dirname(os.path.abspath(file_path))
+        ancestor = utils.nearest_ancestor([ycm_marker], file_dir)
         if ancestor:
             flags = ' '.join(
                 utils.parse_ycm_flags(os.path.join(ancestor, ycm_marker)))
-        else:
-            if ale_cpp_global_flags:
-                flags = ale_cpp_global_flags
-            else:
-                flags = '-std=c++11 -Wall'
-        self.vim.command('let b:ale_cpp_clang_options = "{}"'.format(flags))
+            if len(flags) > 0:
+                self.vim.command(
+                    'let b:ale_cpp_clang_options = "{}"'.format(flags))
