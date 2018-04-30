@@ -26,8 +26,9 @@ flags = [
 ]
 
 if platform.system() == 'Linux':
-    cpp_include_dir = sorted(os.listdir('/usr/include/c++'))[-1]
-    flags.extend(['-isystem', cpp_include_dir])
+    sys_cpp_dir = '/usr/include/c++'
+    cpp_include_dir = sorted(os.listdir(sys_cpp_dir))[-1]
+    flags.extend(['-isystem', os.path.join(sys_cpp_dir, cpp_include_dir)])
 else:
     raise NotImplementedError('Not linux')
 

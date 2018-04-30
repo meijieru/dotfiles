@@ -18,7 +18,8 @@ def parse_ycm_flags(ycm_config_path):
     except ModuleNotFoundError:  # try to load ycm_core
         return []
 
-    to_abs = [flag in ['-isystem', '-I'] for flag in flags]
+    to_abs = [(flags[i - 1] in ['-isystem', '-I'] and
+               (not os.path.isabs(flags[i]))) for i in range(1, len(flags))]
     res = []
     for i, flag in enumerate(flags):
         if i == 0 or (not to_abs[i - 1]):
