@@ -17,6 +17,7 @@ if index(g:bundle_groups, 'simple') >= 0
 	Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
 
+    Plug 'soft-aesthetic/soft-era-vim'
     Plug 'morhetz/gruvbox'
     Plug 'mhartington/oceanic-next'
     Plug 'joshdick/onedark.vim'
@@ -85,7 +86,7 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:Lf_ShortcutF = '<leader>ff'
     let g:Lf_ShortcutB = '<leader>fb'
     nnoremap <leader>fm :LeaderfMru<cr>
-    nnoremap <leader>fc :LeaderfFunction<cr>
+    nnoremap <leader>fc :LeaderfFunction!<cr>
     nnoremap <leader>ft :LeaderfTag<cr>
 
     let g:Lf_RootMarkers = g:root_markers
@@ -96,6 +97,15 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:Lf_StlColorscheme = 'default'
     let g:Lf_StlSeparator = { 'left': '', 'right': '' }
     let g:Lf_MruMaxFiles = 2048
+    let g:Lf_PreviewResult = {'Function': 1}
+    let g:Lf_NormalMap = {
+                \ 'File':   [['<ESC>', ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
+                \ 'Buffer': [['<ESC>', ':exec g:Lf_py "bufExplManager.quit()"<CR>']],
+                \ 'Mru':    [['<ESC>', ':exec g:Lf_py "mruExplManager.quit()"<CR>']],
+                \ 'Tag':    [['<ESC>', ':exec g:Lf_py "tagExplManager.quit()"<CR>']],
+                \ 'Function':    [['<ESC>', ':exec g:Lf_py "functionExplManager.quit()"<CR>']],
+                \ 'Colorscheme':    [['<ESC>', ':exec g:Lf_py "colorschemeExplManager.quit()"<CR>']],
+                \ }
 
     " asyncrun
     function! CmakeBuild()
