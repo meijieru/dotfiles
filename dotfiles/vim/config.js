@@ -1,30 +1,38 @@
 const activate = (oni) => {
-   // access the Oni plugin API here
+    // access the Oni plugin API here
 
-   // for example, unbind the default `<c-p>` action:
-   oni.input.unbind("<c-p>")
+    // for example, unbind the default `<c-p>` action:
+    oni.input.unbind("<c-p>");
 
-   // or bind a new action:
-   // oni.input.bind("<c-enter>", () => alert("Pressed control enter"));
+    // or bind a new action:
+    // oni.input.bind("<c-enter>", () => alert("Pressed control enter"));
+    oni.input.bind("<f8>", "markdown.togglePreview");
 };
 
 module.exports = {
     activate,
-    // change configuration values here:
+
+    "achievements.enabled": false,
+
     "oni.useDefaultConfig": false,
     "oni.loadInitVim": true,
+    "oni.hideMenu": true,
 
+    // editor
+    "editor.clipboard.enabled": false, // by vim
+    "editor.scrollBar.visible": true,
+    "editor.scrollBar.cursorTick.visible": true,
     "editor.fontSize": "14px",
     "editor.fontFamily": "Source Code Pro",
     "editor.completions.enabled": "oni",
 
     // extra
-    "experimental.commandline.mode": false,
-    "autoClosingPairs.enabled": false,  // by vim
+    "experimental.markdownPreview.enabled": true,
+    "autoClosingPairs.enabled": false, // by vim
+    "autoUpdate.enabled": false,
+    "learning.enabled": false,
 
     // display
-    "oni.hideMenu": true,
-    "oni.enhancedSyntaxHighlighting": false,
     "tabs.mode": "native", // disabled
     "tabs.height": "1.8em",
     "statusbar.enabled": false,
@@ -33,11 +41,6 @@ module.exports = {
     "ui.animations.enabled": true,
     "sidebar.enabled": false,
     "commandline.mode": false,
-
-    // editor
-    "editor.clipboard.enabled": false,  // by vim
-    "editor.scrollBar.visible": true,
-    "editor.scrollBar.cursorTick.visible": true,
 
     // language
     "language.python.languageServer.command": "pyls",
