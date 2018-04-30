@@ -1,6 +1,13 @@
 - pacaur:
   - iio-sensor-proxy
   - papirus-smplayer-theme
+  - octopi
+
   - cquery-git
   - python-language-server
+  - oni
+
   - python-vint
+  - cmake-lint
+  - nodejs-jsonlint
+  - ruby-mdl

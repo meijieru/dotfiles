@@ -18,11 +18,13 @@
   - python-scipy
   - python-matplotlib
   - python-pip
-  - flake8
-  - yapf
 
   - texlive-core
   - texlive-science
   - texlive-latexextra
 
+  - flake8
+  - yapf
   - js-beautify
+  - yamllint
+  - prettier
