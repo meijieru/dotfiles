@@ -28,7 +28,7 @@ def log_method(func_name):
 class AuxlibHandlers(object):
 
     def __init__(self, vim):
-        self.vim = vim
+        self.vim = vim  # type: neovim.Nvim
 
     @auxlib_function()
     def test_python(self):
@@ -57,5 +57,4 @@ class AuxlibHandlers(object):
             flags = ' '.join(
                 utils.parse_ycm_flags(os.path.join(ancestor, ycm_marker)))
             if len(flags) > 0:
-                self.vim.command(
-                    'let b:ale_cpp_clang_options = "{}"'.format(flags))
+                self.vim.current.buffer.vars['ale_cpp_clang_options'] = flags
