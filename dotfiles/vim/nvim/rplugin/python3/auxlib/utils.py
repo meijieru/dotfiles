@@ -30,5 +30,25 @@ def parse_ycm_flags(ycm_config_path):
     return res
 
 
+def nearest_ancestor(markers, path):
+    """Find the nearest path which contains ancestor in markers."""
+    if os.name == 'nt':
+        root = os.path.splitdrive(os.path.abspath(path))[0] + os.sep
+    else:
+        root = '/'
+
+    path = os.path.abspath(path)
+    while path != root:
+        for name in markers:
+            if os.path.exists(os.path.join(path, name)):
+                return path
+        path = os.path.abspath(os.path.join(path, ".."))
+    for name in markers:
+        if os.path.exists(os.path.join(path, name)):
+            return path
+    return ""
+
+
 if __name__ == "__main__":
     pprint(parse_ycm_flags('~/.ycm_extra_conf.py'))
+    pprint(nearest_ancestor(['include'], '/usr/lib'))

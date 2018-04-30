@@ -384,7 +384,7 @@ if index(g:bundle_groups, 'auxlib') >= 0
     let g:auxlib#enable_at_startup = 1
     let g:auxlib#_logging = {'level': 'info', 'logfile': g:runtime_root . 'log/auxlib.log', 'overwrite': 1}
 
-    augroup grep
+    augroup auxlib
         autocmd!
         autocmd QuickFixCmdPost *grep* cwindow
     augroup end

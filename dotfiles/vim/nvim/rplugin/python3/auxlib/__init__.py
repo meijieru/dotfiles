@@ -1,3 +1,4 @@
+import os
 import neovim
 from auxlib import utils
 from auxlib import logger
@@ -46,10 +47,17 @@ class AuxlibHandlers(object):
     ]:
         vars()[func_name] = log_method(func_name)
 
-    @auxlib_function(sync=True)
-    def parse_ycm_flags(self, args):
-        return ' '.join(utils.parse_ycm_flags(args[0]))
-
-    @neovim.autocmd('filetype', pattern='cpp', allow_nested=False, sync=True)
-    def set_ale_cpp_options(self):
-        self.vim.command('echo "cpp autocmd"')
+    @neovim.autocmd(
+        'filetype', pattern='cpp', sync=False, eval='g:ale_cpp_clang_options')
+    def set_ale_cpp_options(self, ale_cpp_global_flags):
+        ycm_marker = '.ycm_extra_conf.py'
+        ancestor = utils.nearest_ancestor([ycm_marker], os.getcwd())
+        if ancestor:
+            flags = ' '.join(
+                utils.parse_ycm_flags(os.path.join(ancestor, ycm_marker)))
+        else:
+            if ale_cpp_global_flags:
+                flags = ale_cpp_global_flags
+            else:
+                flags = '-std=c++11 -Wall'
+        self.vim.command('let b:ale_cpp_clang_options = "{}"'.format(flags))

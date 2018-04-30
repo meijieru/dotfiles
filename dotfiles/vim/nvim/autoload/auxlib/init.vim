@@ -11,7 +11,7 @@ endfunction
 
 function auxlib#init#enable() abort
     if has('vim_starting')
-        augroup auxlib
+        augroup auxlib_enable
             autocmd!
             autocmd VimEnter * call auxlib#init#_enable()
         augroup end
