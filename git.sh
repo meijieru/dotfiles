@@ -15,7 +15,8 @@ elif [ $1 = "pull" ]; then
     git checkout master;
     git pull origin master;
     git checkout server;
-    git pull origin server -f;
+    git reset --hard master;
+    git pull origin server;
     echo "pull succeed";
 else
     echo "unknown parameter";
