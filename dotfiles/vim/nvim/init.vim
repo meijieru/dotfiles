@@ -198,6 +198,18 @@ vnoremap > >gv
 " vnoremap <silent> p p`]
 " nnoremap <silent> p p`]
 
+" faster command mode
+cnoremap <c-h> <left>
+cnoremap <c-j> <down>
+cnoremap <c-k> <up>
+cnoremap <c-l> <right>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+cnoremap <c-d> <del>
+" cnoremap <c-f> <c-d>
+" cnoremap <c-b> <left>
+" cnoremap <c-_> <c-k>
+
 " }}} HotKey Settings 
 
 " {{{ FileType Settings
