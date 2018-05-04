@@ -30,3 +30,6 @@ export TERM="xterm-256color"
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PYTHONPATH=$PYTHONPATH
+
+export GTAGSLABEL='native-pygments'
+export GTAGSCONF=$HOME/.config/gtags.conf

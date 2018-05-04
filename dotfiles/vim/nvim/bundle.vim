@@ -73,7 +73,6 @@ endif
 " {{{ bundle group: basic
 if index(g:bundle_groups, 'basic') >= 0
     Plug 'mhinz/vim-startify'
-    Plug 'terryma/vim-expand-region'
     Plug 'xolox/vim-misc'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'skywind3000/asyncrun.vim'
@@ -213,9 +212,20 @@ if index(g:bundle_groups, 'high') >= 0
     let s:vim_tags = g:runtime_root . 'cache/tags'
     let g:gutentags_cache_dir = s:vim_tags
 
+    let g:gutentags_modules = []
+    if executable('ctags')
+        let g:gutentags_modules += ['ctags']
+    endif
+    if executable('gtags-cscope') && executable('gtags')
+        let g:gutentags_modules += ['gtags_cscope']
+    endif
+
     let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
     let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+    let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']  " for universal ctags
+    let g:gutentags_auto_add_gtags_cscope = 0
+    let g:use_gutentags_plus = 1
 
     " Snippets are separated from the engine. Add this if you want them:
     let g:UltiSnipsExpandTrigger       = '<tab>'
@@ -243,6 +253,7 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'tpope/vim-speeddating'
     Plug 'wsdjeg/FlyGrep.vim'
     Plug 'asins/vim-dict'
+    Plug 'terryma/vim-expand-region'
 endif
 " }}} bundle group: optional
 
@@ -332,7 +343,7 @@ if index(g:bundle_groups, 'lsp') >= 0
         \ 'cpp': ['clangd'],
         \ 'python': ['pyls']
         \ }
-    set omnifunc=LanguageClient#complete
+    " set omnifunc=LanguageClient#complete
 
     nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
     nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>

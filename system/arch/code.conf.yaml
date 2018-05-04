@@ -3,12 +3,15 @@
   - python-neovim
   - clang
   - llvm
-  - universal-ctags-git
   - cmake
 
   - gtest
   - boost
   - opencv
+
+  - texlive-core
+  - texlive-science
+  - texlive-latexextra
 
   - cython
   - ipython
@@ -19,12 +22,10 @@
   - python-matplotlib
   - python-pip
 
-  - texlive-core
-  - texlive-science
-  - texlive-latexextra
-
   - flake8
   - yapf
   - js-beautify
   - yamllint
   - prettier
+  - universal-ctags-git
+  - global
