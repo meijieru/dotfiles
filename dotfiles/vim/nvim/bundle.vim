@@ -226,7 +226,8 @@ if index(g:bundle_groups, 'high') >= 0
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']  " for universal ctags
     let g:gutentags_auto_add_gtags_cscope = 0
-    let g:use_gutentags_plus = 1
+    let g:gutentags_plus_use = 1
+    let g:gutentags_plus_height = 10
 
     " Snippets are separated from the engine. Add this if you want them:
     let g:UltiSnipsExpandTrigger       = '<tab>'

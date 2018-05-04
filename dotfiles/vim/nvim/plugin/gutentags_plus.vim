@@ -7,7 +7,7 @@
 "
 "======================================================================
 
-if get(g:, 'use_gutentags_plus', 0) == 0
+if get(g:, 'gutentags_plus_use', 0) == 0
     finish
 endif
 
