@@ -168,6 +168,7 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
     Plug 'bps/vim-textobj-python', {'for': 'python'}
     Plug 'sgur/vim-textobj-parameter'
+    Plug 'jceb/vim-textobj-uri'
 
     Plug 'honza/vim-snippets'
     Plug 'kshenoy/vim-signature'

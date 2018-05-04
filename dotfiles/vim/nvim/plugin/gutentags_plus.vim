@@ -12,6 +12,7 @@ if get(g:, 'use_gutentags_plus', 0) == 0
 endif
 
 let s:windows = has('win32') || has('win64') || has('win16') || has('win95')
+set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+,a+
 
 
 "----------------------------------------------------------------------
@@ -283,16 +284,16 @@ command! -nargs=0 GscopeKill call s:GscopeKill()
 " setup keymaps
 "----------------------------------------------------------------------
 if get(g:, 'gutentags_plus_nomap', 0) == 0
-	noremap <silent> <leader>ss :GscopeFind s <C-R><C-W><cr>
-	noremap <silent> <leader>sg :GscopeFind g <C-R><C-W><cr>
-	noremap <silent> <leader>sc :GscopeFind c <C-R><C-W><cr>
-	noremap <silent> <leader>st :GscopeFind t <C-R><C-W><cr>
-	noremap <silent> <leader>se :GscopeFind e <C-R><C-W><cr>
-	noremap <silent> <leader>sf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-	noremap <silent> <leader>si :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-	noremap <silent> <leader>sd :GscopeFind d <C-R><C-W><cr>
-	noremap <silent> <leader>sa :GscopeFind a <C-R><C-W><cr>
-	noremap <silent> <leader>sk :GscopeKill<cr>
+	noremap <silent> <leader>ts :GscopeFind s <C-R><C-W><cr>
+	noremap <silent> <leader>tg :GscopeFind g <C-R><C-W><cr>
+	noremap <silent> <leader>tc :GscopeFind c <C-R><C-W><cr>
+	noremap <silent> <leader>tt :GscopeFind t <C-R><C-W><cr>
+	noremap <silent> <leader>te :GscopeFind e <C-R><C-W><cr>
+	noremap <silent> <leader>tf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+	noremap <silent> <leader>ti :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+	noremap <silent> <leader>td :GscopeFind d <C-R><C-W><cr>
+	noremap <silent> <leader>ta :GscopeFind a <C-R><C-W><cr>
+	noremap <silent> <leader>tk :GscopeKill<cr>
 endif
 
 " s: Find this C symbol
