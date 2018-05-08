@@ -229,6 +229,20 @@ if index(g:bundle_groups, 'high') >= 0
     let g:gutentags_auto_add_gtags_cscope = 0
     let g:gutentags_plus_use = 1
     let g:gutentags_plus_height = 10
+    let g:gutentags_plus_nomap = 1
+
+    " s: Find this C symbol
+    " g: Find this definition
+    " d: Find functions called by this function
+    " c: Find functions calling this function
+    " t: Find this text string
+    " e: Find this egrep pattern
+    " f: Find this file
+    " i: Find files #including this file
+	noremap <silent> <leader>tr :GscopeFind s <C-R><C-W><cr>
+	noremap <silent> <leader>tg :GscopeFind g <C-R><C-W><cr>
+	noremap <silent> <leader>tc :GscopeFind c <C-R><C-W><cr>
+	noremap <silent> <leader>ti :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
 
     " Snippets are separated from the engine. Add this if you want them:
     let g:UltiSnipsExpandTrigger       = '<tab>'

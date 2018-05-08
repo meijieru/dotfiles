@@ -284,23 +284,14 @@ command! -nargs=0 GscopeKill call s:GscopeKill()
 " setup keymaps
 "----------------------------------------------------------------------
 if get(g:, 'gutentags_plus_nomap', 0) == 0
-	noremap <silent> <leader>ts :GscopeFind s <C-R><C-W><cr>
-	noremap <silent> <leader>tg :GscopeFind g <C-R><C-W><cr>
-	noremap <silent> <leader>tc :GscopeFind c <C-R><C-W><cr>
-	noremap <silent> <leader>tt :GscopeFind t <C-R><C-W><cr>
-	noremap <silent> <leader>te :GscopeFind e <C-R><C-W><cr>
-	noremap <silent> <leader>tf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-	noremap <silent> <leader>ti :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-	noremap <silent> <leader>td :GscopeFind d <C-R><C-W><cr>
-	noremap <silent> <leader>ta :GscopeFind a <C-R><C-W><cr>
-	noremap <silent> <leader>tk :GscopeKill<cr>
+	noremap <silent> <leader>cs :GscopeFind s <C-R><C-W><cr>
+	noremap <silent> <leader>cg :GscopeFind g <C-R><C-W><cr>
+	noremap <silent> <leader>cc :GscopeFind c <C-R><C-W><cr>
+	noremap <silent> <leader>ct :GscopeFind t <C-R><C-W><cr>
+	noremap <silent> <leader>ce :GscopeFind e <C-R><C-W><cr>
+	noremap <silent> <leader>cf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+	noremap <silent> <leader>ci :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+	noremap <silent> <leader>cd :GscopeFind d <C-R><C-W><cr>
+	noremap <silent> <leader>ca :GscopeFind a <C-R><C-W><cr>
+	noremap <silent> <leader>ck :GscopeKill<cr>
 endif
-
-" s: Find this C symbol
-" g: Find this definition
-" d: Find functions called by this function
-" c: Find functions calling this function
-" t: Find this text string
-" e: Find this egrep pattern
-" f: Find this file
-" i: Find files #including this file
