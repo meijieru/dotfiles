@@ -16,6 +16,7 @@ call plug#begin(g:runtime_root . 'plugged')
 if index(g:bundle_groups, 'simple') >= 0
 	Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
+    Plug 'bronson/vim-visual-star-search'
 
     Plug 'soft-aesthetic/soft-era-vim'
     Plug 'morhetz/gruvbox'
