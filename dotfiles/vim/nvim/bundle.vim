@@ -16,6 +16,9 @@ call plug#begin(g:runtime_root . 'plugged')
 if index(g:bundle_groups, 'simple') >= 0
 	Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-commentary'
     Plug 'bronson/vim-visual-star-search'
 
     Plug 'soft-aesthetic/soft-era-vim'
@@ -77,7 +80,6 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'xolox/vim-misc'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'skywind3000/asyncrun.vim'
-    Plug 'scrooloose/nerdcommenter'
     Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
@@ -135,10 +137,6 @@ if index(g:bundle_groups, 'basic') >= 0
     nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
-    " nerdcommenter
-    let g:NERDSpaceDelims = 1
-    let g:NERD_cpp_alt_style=1
-
     " doxygen
     let g:DoxygenToolkit_authorName='meijieru, meijieru@gmail.com'
 
@@ -166,8 +164,9 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-indent'
     Plug 'kana/vim-textobj-syntax'
+    Plug 'kana/vim-textobj-entire'
     Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
-    Plug 'bps/vim-textobj-python', {'for': 'python'}
+    Plug 'bps/vim-textobj-python', { 'for': 'python' }
     Plug 'sgur/vim-textobj-parameter'
     Plug 'jceb/vim-textobj-uri'
 
@@ -265,12 +264,16 @@ endif
 
 " {{{ bundle group: optional
 if index(g:bundle_groups, 'optional') >= 0
-    Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-projectionist'
     Plug 'tpope/vim-speeddating'
     Plug 'wsdjeg/FlyGrep.vim'
     Plug 'asins/vim-dict'
     Plug 'terryma/vim-expand-region'
+    Plug 'scrooloose/nerdcommenter'
+
+    " nerdcommenter
+    let g:NERDSpaceDelims = 1
+    let g:NERD_cpp_alt_style=1
 endif
 " }}} bundle group: optional
 

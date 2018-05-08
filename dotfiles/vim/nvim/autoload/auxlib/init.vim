@@ -3,13 +3,13 @@ if !exists('s:is_enabled')
 endif
 
 
-function auxlib#init#init_variable() abort
+function! auxlib#init#init_variable() abort
     if !exists('g:auxlib#_logging')
         let g:auxlib#_logging = {'level': 'info', 'logfile': '', 'overwrite': 0}
     endif
 endfunction
 
-function auxlib#init#enable() abort
+function! auxlib#init#enable() abort
     if has('vim_starting')
         augroup auxlib_enable
             autocmd!
@@ -21,7 +21,7 @@ function auxlib#init#enable() abort
     call auxlib#init#_enable()
 endfunction
 
-function auxlib#init#_enable() abort
+function! auxlib#init#_enable() abort
     if s:is_enabled ==# 1
         return
     endif

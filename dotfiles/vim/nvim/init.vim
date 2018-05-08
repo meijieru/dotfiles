@@ -105,15 +105,7 @@ if &background ==? 'dark'
 else
     highlight ColorColumn ctermbg=230 guibg=#f9f5d7
 endif
-function ToggleCC()
-  if &colorcolumn ==# ''
-    let &colorcolumn=join(range(81,999),',')
-    let &colorcolumn='80,'.join(range(120,999),',')
-  else
-    let &colorcolumn=''
-  endif
-endfun
-nnoremap <F1> :call ToggleCC()<CR>
+nnoremap <F1> :call auxlib#toggle_colorcolumn()<CR>
 
 " for error highlight
 highlight clear SpellBad
@@ -153,12 +145,12 @@ set formatoptions+=B " do not add space when merge two chinese line
 
 " set up preview
 " https://stackoverflow.com/questions/3712725/can-i-change-vim-completion-preview-window-height
-set previewheight=12
-func PreviewHeightWorkAround()
+set previewheight=10
+function! PreviewHeightWorkAround()
     if &previewwindow
         exec 'setlocal winheight='.&previewheight
     endif
-endfunc
+endfunction
 augroup set_preview
     autocmd!
     autocmd InsertLeave * if pumvisible() == 0|pclose|endif
