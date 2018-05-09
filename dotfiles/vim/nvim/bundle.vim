@@ -27,7 +27,7 @@ if index(g:bundle_groups, 'simple') >= 0
     Plug 'joshdick/onedark.vim'
 
     Plug 'jiangmiao/auto-pairs'
-    Plug 'godlygeek/tabular'
+    Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
     Plug 'easymotion/vim-easymotion'
     Plug 'luochen1990/rainbow'
     Plug 'Yggdroot/indentLine'
@@ -45,7 +45,6 @@ if index(g:bundle_groups, 'simple') >= 0
         autocmd!
         autocmd VimEnter,BufEnter,BufWinEnter * silent! iunmap <buffer> <M-">
     augroup end
-
 
     " tabular
     nnoremap <space>a= :Tabularize /=<CR>
@@ -88,6 +87,7 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'vim-python/python-syntax', { 'for': ['python'] }
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
     Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+    Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 
     " startify
     let g:startify_change_to_dir = 0
