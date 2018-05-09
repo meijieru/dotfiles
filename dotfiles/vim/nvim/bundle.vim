@@ -19,6 +19,7 @@ if index(g:bundle_groups, 'simple') >= 0
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-vinegar'
     Plug 'bronson/vim-visual-star-search'
 
     Plug 'soft-aesthetic/soft-era-vim'
@@ -181,7 +182,6 @@ if index(g:bundle_groups, 'high') >= 0
 
     Plug 'Chiel92/vim-autoformat'
     Plug 'simnalamburt/vim-mundo'
-    Plug 'scrooloose/nerdtree'
     Plug 'Shougo/echodoc.vim'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'SirVer/ultisnips'
@@ -197,13 +197,6 @@ if index(g:bundle_groups, 'high') >= 0
 
     " mundo, undo helper
     nnoremap <Leader>un :MundoToggle<cr>
-
-    " nerdtree
-    map <leader>tr :NERDTreeToggle<CR>
-    let g:NERDTreeHighlightCursorline=1
-    let g:NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
-    let g:NERDTreeMapOpenSplit = 's'
-    let g:NERDTreeMapOpenVSplit = 'v'
 
     " echodoc
     set noshowmode
@@ -229,7 +222,6 @@ if index(g:bundle_groups, 'high') >= 0
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']  " for universal ctags
     let g:gutentags_auto_add_gtags_cscope = 0
-    let g:gutentags_plus_use = 1
     let g:gutentags_plus_height = 10
     let g:gutentags_plus_nomap = 1
 
@@ -273,6 +265,11 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'asins/vim-dict'
     Plug 'terryma/vim-expand-region'
     Plug 'scrooloose/nerdcommenter'
+    Plug 'justinmk/vim-dirvish'
+    Plug 'scrooloose/nerdtree'
+
+    " nerdtree
+    let g:NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
 
     " nerdcommenter
     let g:NERDSpaceDelims = 1
@@ -408,6 +405,7 @@ if index(g:bundle_groups, 'airline') >= 0
     Plug 'vim-airline/vim-airline'
 
     let g:airline_powerline_fonts = 1
+    let g:airline#extensions#whitespace#enabled = 0
 endif
 " }}} bundle group: airline
 
