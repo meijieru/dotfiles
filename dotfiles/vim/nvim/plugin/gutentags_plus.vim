@@ -7,10 +7,6 @@
 "
 "======================================================================
 
-if get(g:, 'gutentags_plus_use', 0) == 0
-    finish
-endif
-
 let s:windows = has('win32') || has('win64') || has('win16') || has('win95')
 set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+,a+
 
@@ -295,3 +291,6 @@ if get(g:, 'gutentags_plus_nomap', 0) == 0
 	noremap <silent> <leader>ca :GscopeFind a <C-R><C-W><cr>
 	noremap <silent> <leader>ck :GscopeKill<cr>
 endif
+
+
+
