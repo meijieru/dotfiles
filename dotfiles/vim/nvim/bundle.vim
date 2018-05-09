@@ -76,8 +76,8 @@ endif
 
 " {{{ bundle group: basic
 if index(g:bundle_groups, 'basic') >= 0
-    Plug 'mhinz/vim-startify'
     Plug 'xolox/vim-misc'
+    Plug 'mhinz/vim-startify'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'skywind3000/asyncrun.vim'
     Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
@@ -88,6 +88,9 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'vim-python/python-syntax', { 'for': ['python'] }
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
     Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+
+    " startify
+    let g:startify_change_to_dir = 0
 
     " LeaderF
     let g:Lf_ShortcutF = '<leader>ff'
