@@ -212,7 +212,7 @@ augroup filetype_specify
     autocmd filetype cuda setlocal ft=cuda.cpp
     autocmd filetype plaintex,latex setlocal ft=tex
     autocmd filetype tex,text,markdown setlocal wrap
-    autocmd filetype cpp,c setlocal nowrap
+    autocmd filetype cpp,c setlocal nowrap commentstring=//\ %s
 augroup end
 
 " }}} FileType Settings
