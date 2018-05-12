@@ -243,8 +243,8 @@ if index(g:bundle_groups, 'high') >= 0
 
     " Snippets are separated from the engine. Add this if you want them:
     let g:UltiSnipsExpandTrigger       = '<tab>'
-    let g:UltiSnipsJumpForwardTrigger  = '<c-b>'
-    let g:UltiSnipsJumpBackwardTrigger = '<c-f>'
+    let g:UltiSnipsJumpForwardTrigger  = '<c-k>'
+    let g:UltiSnipsJumpBackwardTrigger = '<c-j>'
     let g:UltiSnipsSnippetDirectories  = ['UltiSnips', 'mysnippets']
     let g:UltiSnipsSnippetsDir = g:runtime_root . 'plugged/vim-snippets/UltiSnips'
     let g:ultisnips_python_style = 'google'
