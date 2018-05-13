@@ -2,6 +2,7 @@
 
 ## Prequisite
 
+- Make bootable usb `sudo dd if={path_to_iso} of={/dev/sda} bs=4M conv=fdatasync`
 - Change mirror source
 - Add following to `/etc/pacman.conf`, `pacman -Syy`, then `pacman -S archlinuxcn-keyring`
 
