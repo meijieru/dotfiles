@@ -30,3 +30,5 @@
   - sshfs
   - tmux
   - git
+  - cloc
+  - tree

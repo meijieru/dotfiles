@@ -5,6 +5,8 @@
   - llvm
   - cmake
 
+  - fmt
+  - catch2
   - gtest
   - boost
   - opencv

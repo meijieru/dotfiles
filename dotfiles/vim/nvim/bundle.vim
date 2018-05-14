@@ -76,7 +76,7 @@ endif
 
 " {{{ bundle group: basic
 if index(g:bundle_groups, 'basic') >= 0
-    Plug 'xolox/vim-misc'
+    Plug 'vim-jp/vital.vim'
     Plug 'mhinz/vim-startify'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'skywind3000/asyncrun.vim'

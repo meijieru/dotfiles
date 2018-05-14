@@ -16,7 +16,11 @@
 
 ## Postprocess
 
-- start up services
+- Sudo
+    - For manjaro, run `sudo rm /etc/sudoers.d -r`
+    - sudo 免密码：使用 `visudo` 并添加 `%wheel ALL=(ALL) NOPASSWD: ALL`
+
+- Start up services
     - `sudo systemctl enable dhcpcd`
     - `sudo systemctl enable NetworkManager`
     - `sudo systemctl enable bluetooth`
@@ -25,8 +29,12 @@
 
 - HiDPI
     - [Grub](https://unix.stackexchange.com/questions/31672/can-grub-font-size-be-customised)
+    - [SDDM](https://wiki.archlinux.org/index.php/SDDM#Enable_HiDPI)
 
-- font
+- Mount
+    - edit `/etc/fstab` as [guide](https://wiki.archlinux.org/index.php/Fstab)
+
+- Font
     - [emoji](https://wiki.archlinux.org/index.php/Font_configuration/Examples#System-wide_Noto_Emoji_fonts)
     - [win10](https://aur.archlinux.org/pkgbase/ttf-ms-win10/)
         - Download the PKGBUILD file into windows font dir `$WIN10/Windows/Fonts`
@@ -38,7 +46,7 @@
 - Swap File
     - no need
 
-- fcitx
+- Fcitx
     - add following to `/etc/environment`
 
         ```
