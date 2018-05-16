@@ -20,6 +20,9 @@ if index(g:bundle_groups, 'simple') >= 0
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-vinegar'
+    if auxlib#is_unix()
+        Plug 'tpope/vim-eunuch'
+    endif
     Plug 'bronson/vim-visual-star-search'
 
     Plug 'soft-aesthetic/soft-era-vim'

@@ -31,3 +31,14 @@ function! auxlib#toggle_colorcolumn()
     let &colorcolumn=''
   endif
 endfunction
+
+function! auxlib#is_win()
+    if has('win32')
+        return 1
+    endif
+endfunction
+
+function! auxlib#is_unix()
+    " FIXME(meijieru)
+    return !auxlib#is_win()
+endfunction
