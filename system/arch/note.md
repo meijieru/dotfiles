@@ -18,7 +18,7 @@
 
 - Sudo
     - For manjaro, run `sudo rm /etc/sudoers.d -r`
-    - sudo 免密码：使用 `visudo` 并添加 `%wheel ALL=(ALL) NOPASSWD: ALL`
+    - sudo without passwd：run `visudo` and add `%wheel ALL=(ALL) NOPASSWD: ALL`
 
 - Start up services
     - `sudo systemctl enable dhcpcd`

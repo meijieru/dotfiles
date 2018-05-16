@@ -32,7 +32,7 @@
     ~/.latexmkrc: dotfiles/utils/latexmkrc
     ~/.gemrc: dotfiles/utils/gemrc
     ~/.npmrc: dotfiles/utils/npmrc
-    ~/.xmodmap: dotfiles/utils/xmodmap
+    ~/.Xmodmap: dotfiles/utils/xmodmap
     ~/.wakatime.cfg: dotfiles/utils/wakatime.cfg
     ~/.aria2/aria2.conf: dotfiles/utils/aria2.conf
     ~/.config/matplotlib/matplotlibrc: dotfiles/utils/matplotlibrc
