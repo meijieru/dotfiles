@@ -54,3 +54,18 @@
         export QT_IM_MODULE=fcitx
         export XMODIFIERS=@im=fcitx
         ```
+
+- Touchpad
+    - run `sudo gpasswd -a $USER input`
+    - run `libinput-gestures-setup autostart`
+
+- Keyring
+    - following [wiki](https://wiki.archlinux.org/index.php/GNOME/Keyring), add following to `/etc/pam.d/sddm`
+        ```
+        -auth      optional     pam_gnome_keyring.so
+        -session   optional     pam_gnome_keyring.so auto_start
+        ```
+
+- KDE
+    - CapsLock to Ctrl
+        - go to `input->keyboard->advanced->Caps Lock behavior`

@@ -1,6 +1,8 @@
 - pacman: 
   - neovim
   - python-neovim
+  - oni
+  - cquery-git
   - clang
   - llvm
   - cmake
@@ -14,6 +16,7 @@
   - texlive-core
   - texlive-science
   - texlive-latexextra
+  - texlive-langchinese
 
   - cython
   - ipython

@@ -1,6 +1,7 @@
 - pacman:
   - yaourt
   - grub
+  - grub-theme-manjaro
   - efibootmgr
   - os-prober
   - intel-ucode

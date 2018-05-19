@@ -3,12 +3,19 @@
 " gutentags_plus.vim - connecting gtags_cscope db on demand
 "
 " Created by skywind on 2018/04/25
-" Last Modified: 2018/04/25 15:40:46
+" Last Modified: 2018/05/19 21:48
 "
 "======================================================================
 
 let s:windows = has('win32') || has('win64') || has('win16') || has('win95')
-set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+,a+
+
+if v:version >= 800
+	set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+,a+
+else
+	set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+
+endif
+
+let g:gutentags_auto_add_gtags_cscope = 0
 
 
 "----------------------------------------------------------------------
@@ -227,7 +234,18 @@ function! s:GscopeFind(bang, what, ...)
 	elseif a:what == '9' || a:what == 'a'
 		let text = 'assigned "'.keyword.'"'
 	endif
-	silent cexpr "[cscope ".a:what.": ".l:text."]"
+	let text = "[cscope ".a:what.": ".text."]"
+	let title = "GscopeFind ".a:what.' "'.keyword.'"'
+	if has('nvim') == 0 && (v:version >= 800 || has('patch-7.4.2210'))
+		call setqflist([], ' ', {'title':title})
+	elseif has('nvim') && has('nvim-0.2.2')
+		call setqflist([], ' ', {'title':title})
+	elseif has('nvim')
+		call setqflist([], ' ', title)
+	else
+		call setqflist([], ' ')
+	endif
+	call setqflist([{'text':text}], 'a')
 	let success = 1
 	try
 		exec 'cs find '.a:what.' '.fnameescape(keyword)
