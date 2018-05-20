@@ -10,6 +10,7 @@
   - fmt
   - catch2
   - gtest
+  - google-glog
   - boost
   - opencv
 

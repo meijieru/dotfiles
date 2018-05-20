@@ -1,5 +1,5 @@
 - pacman:
-  - yaourt
+  - yay
   - grub
   - grub-theme-manjaro
   - efibootmgr
@@ -31,6 +31,8 @@
   - zsh
   - fzf
 
+  - adobe-source-han-serif-cn-fonts
+  - adobe-source-han-serif-tw-fonts
   - adobe-source-han-sans-cn-fonts
   - adobe-source-han-sans-tw-fonts
   - adobe-source-code-pro-fonts
