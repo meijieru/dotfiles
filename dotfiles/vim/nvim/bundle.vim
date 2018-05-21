@@ -86,7 +86,7 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
-    Plug 'vim-scripts/fcitx.vim', { 'for': ['markdown'] }
+    Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown'] }
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
     Plug 'vim-python/python-syntax', { 'for': ['python'] }
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
@@ -190,6 +190,7 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'simnalamburt/vim-mundo'
     Plug 'Shougo/echodoc.vim'
     Plug 'ludovicchabant/vim-gutentags'
+    Plug 'skywind3000/gutentags_plus'
     Plug 'SirVer/ultisnips'
     Plug 'lervag/vimtex', { 'for': ['tex'] }
 
