@@ -1,6 +1,7 @@
 - pacaur:
-  - iio-sensor-proxy
-  - papirus-smplayer-theme
+  # - iio-sensor-proxy
+  - papirus-smplayer-theme-git
+  - clementine-qt5-git
 
   - ccat
   - python-language-server
@@ -9,4 +10,4 @@
   - python-vint
   - cmake-lint
   - nodejs-jsonlint
-  - ruby-mdl
+  # - ruby-mdl

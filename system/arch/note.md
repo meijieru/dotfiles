@@ -68,4 +68,7 @@
 
 - KDE
     - CapsLock to Ctrl
-        - go to `input->keyboard->advanced->Caps Lock behavior`
+        - go to `Input Devices->Keyboard->Advanced->Caps Lock behavior`
+
+- Bluetooth
+    - For headset, go to `multimedia->Audio and Video->Device Preference`, set headset to the prefered one
