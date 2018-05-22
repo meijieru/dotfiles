@@ -86,7 +86,7 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
-    Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown'] }
+    Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
     Plug 'vim-python/python-syntax', { 'for': ['python'] }
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
@@ -174,7 +174,7 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-indent'
     Plug 'kana/vim-textobj-syntax'
-    Plug 'kana/vim-textobj-entire'
+    " Plug 'kana/vim-textobj-entire'
     Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
     Plug 'bps/vim-textobj-python', { 'for': 'python' }
     Plug 'sgur/vim-textobj-parameter'
@@ -256,11 +256,20 @@ if index(g:bundle_groups, 'high') >= 0
     map <leader>us :UltiSnipsEdit<CR>
 
     " vimtex
-    let g:vimtex_fold_enabled = 1
-    let g:vimtex_view_general_viewer = 'okular'
-    let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-    let g:vimtex_view_general_options_latexmk = '--unique'
-    let g:vimtex_latexmk_continuous = 0
+    if has('nvim')
+        let g:vimtex_compiler_progname = 'nvr'
+    endif
+    let g:vimtex_fold_enabled = 0
+    let g:vimtex_view_method = 'zathura'
+    if get(g:, 'vimtex_view_general_viewer', '') ==# 'okular'
+        let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+        let g:vimtex_view_general_options_latexmk = '--unique'
+        " Backward search must be set up from the viewer through Settings > Editor > Custom Text Editor. The following settings
+        " should work for Vim and neovim, respectively:
+            " vim --remote-silent %f -c %l
+            " nvr --remote-silent %f -c %l
+    endif
+    let g:vimtex_compiler_latexmk = { 'continuous' : 1 }
 endif
 " }}} bundle group: high
 

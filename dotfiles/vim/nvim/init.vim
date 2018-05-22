@@ -1,5 +1,6 @@
 " change leader
 let g:mapleader = ' '
+let g:maplocalleader = ' '
 
 " global var
 let g:root_markers = ['.svn', '.git', '.root', '.project'] 

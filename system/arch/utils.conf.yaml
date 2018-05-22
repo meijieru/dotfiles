@@ -10,6 +10,8 @@
   - shadowsocks-qt5
   - proxychains-ng
   - okular
+  - zathura
+  - zathura-pdf-mupdf
   - smplayer
   - wiznote
   - libreoffice-fresh
