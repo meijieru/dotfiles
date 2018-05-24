@@ -14,12 +14,14 @@ call plug#begin(g:runtime_root . 'plugged')
 
 " {{{ bundle group: simple
 if index(g:bundle_groups, 'simple') >= 0
-	Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-vinegar'
+    Plug 'tpope/vim-sleuth'
+    Plug 'tpope/vim-rsi'
     if auxlib#is_unix()
         Plug 'tpope/vim-eunuch'
     endif
@@ -79,7 +81,6 @@ endif
 
 " {{{ bundle group: basic
 if index(g:bundle_groups, 'basic') >= 0
-    Plug 'vim-jp/vital.vim'
     Plug 'mhinz/vim-startify'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'skywind3000/asyncrun.vim'
@@ -277,6 +278,8 @@ endif
 if index(g:bundle_groups, 'optional') >= 0
     Plug 'tpope/vim-projectionist'
     Plug 'tpope/vim-speeddating'
+    Plug 'tpope/vim-scriptease'
+    Plug 'vim-jp/vital.vim'
     Plug 'wsdjeg/FlyGrep.vim'
     Plug 'asins/vim-dict'
     Plug 'terryma/vim-expand-region'
