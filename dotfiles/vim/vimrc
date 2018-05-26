@@ -1,0 +1,2 @@
+set runtimepath^=$HOME/.local/share/nvim/site,$HOME/.config/nvim
+source $HOME/.config/nvim/init.vim

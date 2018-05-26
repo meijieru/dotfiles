@@ -20,6 +20,7 @@
     # vim
     ~/.config/nvim: dotfiles/vim/nvim
     ~/.config/oni/config.js: ./dotfiles/vim/config.js
+    ~/.vimrc: ./dotfiles/vim/vimrc
 
     # git
     ~/.gitconfig: dotfiles/git/gitconfig
