@@ -13,6 +13,11 @@ function auxlib#utils#set_global(variable_name, default) abort
 endfunction
 
 function auxlib#utils#is_win()
-  " Returns 1 (true) when on Microsoft Windows, 0 (false) otherwise.
-  return has('win16') || has('win32') || has('win64')
+    " Returns 1 (true) when on Microsoft Windows, 0 (false) otherwise.
+    return has('win16') || has('win32') || has('win64')
+endfunction
+
+function! auxlib#utils#is_unix()
+    " FIXME(meijieru)
+    return !auxlib#utils#is_win()
 endfunction

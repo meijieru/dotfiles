@@ -22,7 +22,7 @@ if index(g:bundle_groups, 'simple') >= 0
     Plug 'tpope/vim-vinegar'
     Plug 'tpope/vim-sleuth'
     Plug 'tpope/vim-rsi'
-    if auxlib#is_unix()
+    if auxlib#utils#is_unix()
         Plug 'tpope/vim-eunuch'
     endif
     Plug 'bronson/vim-visual-star-search'
@@ -54,15 +54,15 @@ if index(g:bundle_groups, 'simple') >= 0
 
     " tabular
     nnoremap <space>a= :Tabularize /=<CR>
-	vnoremap <space>a= :Tabularize /=<CR>
-	nnoremap <space>a/ :Tabularize /\/\//l2c1l0<CR>
-	vnoremap <space>a/ :Tabularize /\/\//l2c1l0<CR>
-	nnoremap <space>a, :Tabularize /,/l0r1<CR>
-	vnoremap <space>a, :Tabularize /,/l0r1<CR>
-	nnoremap <space>al :Tabularize /\|<cr>
-	vnoremap <space>al :Tabularize /\|<cr>
-	nnoremap <space>ar :Tabularize /\|/r1<cr>
-	vnoremap <space>ar :Tabularize /\|/r1<cr>
+    vnoremap <space>a= :Tabularize /=<CR>
+    nnoremap <space>a/ :Tabularize /\/\//l2c1l0<CR>
+    vnoremap <space>a/ :Tabularize /\/\//l2c1l0<CR>
+    nnoremap <space>a, :Tabularize /,/l0r1<CR>
+    vnoremap <space>a, :Tabularize /,/l0r1<CR>
+    nnoremap <space>al :Tabularize /\|<cr>
+    vnoremap <space>al :Tabularize /\|<cr>
+    nnoremap <space>ar :Tabularize /\|/r1<cr>
+    vnoremap <space>ar :Tabularize /\|/r1<cr>
 
     " easymotion
     let g:EasyMotion_smartcase = 1
@@ -87,7 +87,7 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
-    Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
+    " Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
     Plug 'vim-python/python-syntax', { 'for': ['python'] }
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
@@ -128,7 +128,7 @@ if index(g:bundle_groups, 'basic') >= 0
     " asyncrun
     function! CmakeBuild()
         let l:dst = asyncrun#get_root('%')
-        if filereadable('CMakeLists.txt')
+        if filereadable(l:dst . '/CMakeLists.txt')
             let l:num_cpu = system('grep -c ^processor /proc/cpuinfo')
             let l:num_cpu_used = max([l:num_cpu - 2, 1])
             call mkdir(l:dst . '/build', 'p', '0775')
@@ -141,7 +141,6 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:asyncrun_rootmarks = g:root_markers + ['_darcs', 'build.xml'] 
     let g:asyncrun_open = 10
     let g:asyncrun_status = ''
-    nnoremap <leader>as :AsyncRun<space>
     nnoremap <silent> <F5> :call CmakeBuild()<cr>
     nnoremap <silent> <F6> :AsyncRun -cwd=<root>/build -raw make runtest <cr>
     nnoremap <silent> <F7> :AsyncRun -cwd=<root>/build -raw make run <cr>
@@ -153,11 +152,11 @@ if index(g:bundle_groups, 'basic') >= 0
 
     " vim-cpp-enhanced-highlight
     let g:cpp_class_scope_highlight = 1
-	let g:cpp_member_variable_highlight = 1
-	let g:cpp_class_decl_highlight = 1
-	let g:cpp_experimental_simple_template_highlight = 1
-	let g:cpp_concepts_highlight = 1
-	let g:cpp_no_function_highlight = 1
+    let g:cpp_member_variable_highlight = 1
+    let g:cpp_class_decl_highlight = 1
+    let g:cpp_experimental_simple_template_highlight = 1
+    let g:cpp_concepts_highlight = 1
+    let g:cpp_no_function_highlight = 1
 
     " python-syntax
     let g:python_highlight_all = 1
@@ -185,7 +184,6 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'kshenoy/vim-signature'
     Plug 'wakatime/vim-wakatime'
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 
     Plug 'Chiel92/vim-autoformat'
     Plug 'simnalamburt/vim-mundo'
@@ -241,10 +239,10 @@ if index(g:bundle_groups, 'high') >= 0
     " e: Find this egrep pattern
     " f: Find this file
     " i: Find files #including this file
-	noremap <silent> <leader>tr :GscopeFind s <C-R><C-W><cr>
-	noremap <silent> <leader>tg :GscopeFind g <C-R><C-W><cr>
-	noremap <silent> <leader>tc :GscopeFind c <C-R><C-W><cr>
-	noremap <silent> <leader>ti :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+    noremap <silent> <leader>tr :GscopeFind s <C-R><C-W><cr>
+    noremap <silent> <leader>tg :GscopeFind g <C-R><C-W><cr>
+    noremap <silent> <leader>tc :GscopeFind c <C-R><C-W><cr>
+    noremap <silent> <leader>ti :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
 
     " Snippets are separated from the engine. Add this if you want them:
     let g:UltiSnipsExpandTrigger       = '<tab>'
@@ -286,6 +284,7 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'scrooloose/nerdcommenter'
     Plug 'justinmk/vim-dirvish'
     Plug 'scrooloose/nerdtree'
+    Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 
     " nerdtree
     let g:NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]

@@ -1,5 +1,5 @@
 if !exists('s:is_enabled')
-  let s:is_enabled = 0
+    let s:is_enabled = 0
 endif
 
 
@@ -27,7 +27,9 @@ function! auxlib#init#_enable() abort
     endif
 
     call auxlib#init#init_variable()
-    call Auxlib_enable_logging()
-    
+    if has('nvim')
+        call Auxlib_enable_logging()
+    endif
+
     let s:is_enabled = 1
 endfunction
