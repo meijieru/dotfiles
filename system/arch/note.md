@@ -72,3 +72,11 @@
 
 - Bluetooth
     - For headset, go to `multimedia->Audio and Video->Device Preference`, set headset to the prefered one
+
+- Vim
+    - open neovim, run `PlugInstall`
+    - Inverse search in okular. Backward search must be set up from the viewer through `Settings > Editor > Custom Text Editor`. The following settings should work for Vim and neovim, respectively:
+        ```
+        vim --remote-silent %f -c %l
+        nvr --remote-silent %f -c %l
+        ```

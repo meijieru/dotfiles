@@ -1,8 +1,7 @@
-$pdf_mode = 1;
-$pdflatex = "xelatex -file-line-error --shell-escape -src-specials -synctex=1 -interaction=nonstopmode %O %S";
-$recorder = 1;
-$preview_continuous_mode = 0;
-$pdf_update_method = 0;
-$clean_ext = "synctex.gz acn acr alg aux bbl bcf blg brf fdb_latexmk glg glo gls idx ilg ind ist lof log lot out run.xml toc dvi";
-$bibtex_use = 2;
+$pdflatex = "xelatex -synctex=1 -interaction=nonstopmode";
+$pdf_previewer = 'start okular';
+$pdf_mode = 1;  # output pdf
 $out_dir = "build";
+$cleanup_mode = 0;
+$preview_continuous_mode = 1;
+# @default_files = ('main.tex');

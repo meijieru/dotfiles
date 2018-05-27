@@ -259,16 +259,23 @@ if index(g:bundle_groups, 'high') >= 0
         let g:vimtex_compiler_progname = 'nvr'
     endif
     let g:vimtex_fold_enabled = 0
-    let g:vimtex_view_method = 'zathura'
+    let g:vimtex_view_method = 'general'
+    let g:vimtex_view_general_viewer = 'okular'
     if get(g:, 'vimtex_view_general_viewer', '') ==# 'okular'
         let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
         let g:vimtex_view_general_options_latexmk = '--unique'
-        " Backward search must be set up from the viewer through Settings > Editor > Custom Text Editor. The following settings
-        " should work for Vim and neovim, respectively:
-            " vim --remote-silent %f -c %l
-            " nvr --remote-silent %f -c %l
     endif
     let g:vimtex_compiler_latexmk = { 'continuous' : 1 }
+    let g:vimtex_compiler_latexmk = {
+        \ 'options' : [
+        \   '-xelatex',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+
 endif
 " }}} bundle group: high
 
