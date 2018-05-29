@@ -40,7 +40,7 @@ module.exports = {
     "ui.colorscheme": "gruvbox",
     "ui.animations.enabled": true,
     "sidebar.enabled": false,
-    "commandline.mode": false,
+    // "commandline.mode": false,
 
     // language
     "language.python.languageServer.command": "pyls",

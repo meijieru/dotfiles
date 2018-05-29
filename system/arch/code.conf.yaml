@@ -18,6 +18,8 @@
   - texlive-science
   - texlive-latexextra
   - texlive-langchinese
+  - texlive-pictures
+  - texlive-fontsextra
 
   - cython
   - ipython

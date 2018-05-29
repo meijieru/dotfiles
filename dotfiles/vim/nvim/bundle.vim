@@ -68,7 +68,6 @@ if index(g:bundle_groups, 'simple') >= 0
     let g:EasyMotion_smartcase = 1
     map <Leader><leader>. <Plug>(easymotion-repeat)
     map <Leader><leader>s <Plug>(easymotion-sn)
-    map <Leader><leader>t <Plug>(easymotion-tn)
 
     " rainbow for pairs
     let g:rainbow_active=1
@@ -292,6 +291,8 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'justinmk/vim-dirvish'
     Plug 'scrooloose/nerdtree'
     Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
+    Plug 'liuchengxu/space-vim-dark'
+    Plug 'dyng/ctrlsf.vim'
 
     " nerdtree
     let g:NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
@@ -319,8 +320,10 @@ if index(g:bundle_groups, 'ale') >= 0
     Plug 'w0rp/ale'
 
     " syntax checker
-    let g:ale_sign_error = '✖'
-    let g:ale_sign_warning = '⚠'
+    let g:ale_sign_error = '•'
+    let g:ale_sign_warning = '•'
+    highlight link ALEErrorSign    Error
+    highlight link ALEWarningSign  Warning
     let g:ale_linters = {
     \   'cpp': ['clang'],
     \   'c': ['clang'],
