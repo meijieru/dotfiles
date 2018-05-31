@@ -83,7 +83,6 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'mhinz/vim-startify'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'skywind3000/asyncrun.vim'
-    Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
     " Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
@@ -146,9 +145,6 @@ if index(g:bundle_groups, 'basic') >= 0
     nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
-    " doxygen
-    let g:DoxygenToolkit_authorName='meijieru, meijieru@gmail.com'
-
     " vim-cpp-enhanced-highlight
     let g:cpp_class_scope_highlight = 1
     let g:cpp_member_variable_highlight = 1
@@ -183,6 +179,7 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'kshenoy/vim-signature'
     Plug 'wakatime/vim-wakatime'
     Plug 'terryma/vim-multiple-cursors'
+    Plug 'dyng/ctrlsf.vim'
 
     Plug 'Chiel92/vim-autoformat'
     Plug 'simnalamburt/vim-mundo'
@@ -292,7 +289,8 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'scrooloose/nerdtree'
     Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
     Plug 'liuchengxu/space-vim-dark'
-    Plug 'dyng/ctrlsf.vim'
+    Plug 'sillybun/vim-repl'
+    Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
 
     " nerdtree
     let g:NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
@@ -300,6 +298,10 @@ if index(g:bundle_groups, 'optional') >= 0
     " nerdcommenter
     let g:NERDSpaceDelims = 1
     let g:NERD_cpp_alt_style=1
+
+    " doxygen
+    let g:DoxygenToolkit_authorName='meijieru, meijieru@gmail.com'
+
 endif
 " }}} bundle group: optional
 
