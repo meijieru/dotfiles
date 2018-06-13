@@ -18,8 +18,10 @@ def auxlib_function(*args, **kwargs):
 def log_method(func_name):
 
     @neovim.function(func_name_template.format(func_name))
-    def wrapper(self, args):
-        getattr(self._logger, func_name)(args[0])
+    def wrapper(self, *args, **kwargs):
+        fun = getattr(self._logger, func_name, None)
+        if fun:
+            fun(*args, **kwargs)
 
     return wrapper
 
@@ -29,6 +31,7 @@ class AuxlibHandlers(object):
 
     def __init__(self, vim):
         self.vim = vim  # type: neovim.Nvim
+        self._logger = None
 
     @auxlib_function()
     def test_python(self):
@@ -54,7 +57,10 @@ class AuxlibHandlers(object):
         file_dir = os.path.dirname(os.path.abspath(file_path))
         ancestor = utils.nearest_ancestor([ycm_marker], file_dir)
         if ancestor:
+            ycm_config_path = os.path.join(ancestor, ycm_marker)
+            self.info('Ycm config path: {}'.format(ycm_config_path))
             flags = ' '.join(
-                utils.parse_ycm_flags(os.path.join(ancestor, ycm_marker)))
+                utils.parse_ycm_flags(ycm_config_path))
             if len(flags) > 0:
                 self.vim.current.buffer.vars['ale_cpp_clang_options'] = flags
+                self.info('Set ale flag: {}'.format(flags))

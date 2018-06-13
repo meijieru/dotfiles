@@ -85,7 +85,7 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'skywind3000/asyncrun.vim'
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
-    " Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
+    Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
     Plug 'vim-python/python-syntax', { 'for': ['python'] }
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
@@ -178,7 +178,7 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'honza/vim-snippets'
     Plug 'kshenoy/vim-signature'
     Plug 'wakatime/vim-wakatime'
-    Plug 'terryma/vim-multiple-cursors'
+    Plug 'mg979/vim-visual-multi'
     Plug 'dyng/ctrlsf.vim'
 
     Plug 'Chiel92/vim-autoformat'
