@@ -38,9 +38,7 @@
   - adobe-source-code-pro-fonts
   - noto-fonts-emoji
 
-  - fcitx
-  - fcitx-qt5
-  - fcitx-gtk3
-  - fcitx-cloudpinyin
-  - fcitx-libpinyin
-  - kcm-fcitx
+  - fcitx5-git
+  - fcitx5-chinese-addons-git
+  - fcitx5-qt5-git
+  - kcm-fcitx5-git
