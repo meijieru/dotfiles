@@ -385,19 +385,19 @@ endif
 if index(g:bundle_groups, 'lsp') >= 0
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 
-    set hidden " Required for operations modifying multiple buffers like rename.
+    " set hidden " Required for operations modifying multiple buffers like rename.
     let g:LanguageClient_diagnosticsList = 'Location'
     let g:LanguageClient_diagnosticsEnable = 0
     let g:LanguageClient_rootMarkers = g:root_markers
     let g:LanguageClient_serverCommands = {
-        \ 'cpp': ['clangd'],
+        \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
         \ 'python': ['pyls']
         \ }
     " set omnifunc=LanguageClient#complete
 
     nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> <leader>gdf :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> <leader>gr :call LanguageClient_textDocument_references()<CR>
 endif
 " }}} bundle group: lsp
