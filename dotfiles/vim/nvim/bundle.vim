@@ -98,10 +98,10 @@ if index(g:bundle_groups, 'basic') >= 0
     " LeaderF
     let g:Lf_ShortcutF = '<leader>ff'
     let g:Lf_ShortcutB = '<leader>fb'
-    nnoremap <leader>fm :LeaderfMru<cr>
-    nnoremap <leader>fc :LeaderfFunction!<cr>
-    nnoremap <leader>fl :LeaderfBufTag!<cr>
-    nnoremap <leader>ft :LeaderfTag<cr>
+    nnoremap <leader>fm :Leaderf mru<cr>
+    nnoremap <leader>fc :Leaderf! function<cr>
+    nnoremap <leader>fl :Leaderf! bufTag<cr>
+    nnoremap <leader>ft :Leaderf tag<cr>
 
     let g:Lf_RootMarkers = g:root_markers
     let g:Lf_WorkingDirectoryMode = 'Ac'
