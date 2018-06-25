@@ -388,6 +388,7 @@ if index(g:bundle_groups, 'lsp') >= 0
     " set hidden " Required for operations modifying multiple buffers like rename.
     let g:LanguageClient_diagnosticsList = 'Location'
     let g:LanguageClient_diagnosticsEnable = 0
+    let g:Lf_UseVersionControlTool = 0
     let g:LanguageClient_rootMarkers = g:root_markers
     let g:LanguageClient_serverCommands = {
         \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
