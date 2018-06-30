@@ -12,7 +12,7 @@
     Server = http://repo.archlinuxcn.org/$arch
     ```
 
-- Install `pacaur`, and set up git
+- Install `yay`, and set up git
 
 ## Postprocess
 
@@ -21,10 +21,11 @@
     - sudo without passwd：run `visudo` and add `%wheel ALL=(ALL) NOPASSWD: ALL`
 
 - Start up services
-    - `sudo systemctl enable dhcpcd`
     - `sudo systemctl enable NetworkManager`
     - `sudo systemctl enable bluetooth`
     - `sudo systemctl enable sddm`
+    - `sudo systemctl enable tlp`
+    - `sudo systemctl enable tlp-sleep`
     - `sudo systemctl disable netctl`
 
 - HiDPI
@@ -50,9 +51,9 @@
     - add following to `/etc/environment`
 
         ```
-        export GTK_IM_MODULE=fcitx
-        export QT_IM_MODULE=fcitx
-        export XMODIFIERS=@im=fcitx
+        GTK_IM_MODULE=fcitx5
+        XMODIFIERS=@im=fcitx
+        QT_IM_MODULE=fcitx5
         ```
 
 - Touchpad

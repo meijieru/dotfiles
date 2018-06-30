@@ -11,9 +11,11 @@
   - proxychains-ng
   - okular
   - smplayer
+  - moonplayer
+  - moonplayer-plugins
   - wiznote
   - libreoffice-fresh
-  - libreoffice-fresh-zh-CN
+  - libreoffice-fresh-zh-cn
   - chromium
   - kdeconnect
   - goldendict
@@ -21,6 +23,7 @@
   - electronic-wechat
   - skypeforlinux-stable-bin
   - gnome-keyring
+  - libinput-gestures
 
   - autojump
   - unzip

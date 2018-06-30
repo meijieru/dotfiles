@@ -1,7 +1,8 @@
 - pacman:
   - yay
+  - pacman-contrib
   - grub
-  - grub-theme-manjaro
+  # - grub-theme-manjaro
   - efibootmgr
   - os-prober
   - intel-ucode
@@ -10,11 +11,12 @@
   - ntfs-3g
   - exfat-utils
   - pulseaudio-bluetooth
+  - tlp
+  - ethtool
+  - smartmontools
 
   - xorg-server
   - xorg-server-xwayland
-  - xorg-xinput
-  - xorg-xmodmap
   - xf86-video-intel
   - libva-intel-driver
   - vulkan-intel
@@ -41,4 +43,5 @@
   - fcitx5-git
   - fcitx5-chinese-addons-git
   - fcitx5-qt5-git
+  - fcitx5-gtk-git
   - kcm-fcitx5-git
