@@ -104,7 +104,7 @@ if index(g:bundle_groups, 'basic') >= 0
     nnoremap <leader>ft :Leaderf tag<cr>
 
     let g:Lf_RootMarkers = g:root_markers
-    let g:Lf_WorkingDirectoryMode = 'Ac'
+    let g:Lf_WorkingDirectoryMode = 'ac'
     let g:Lf_WindowHeight = 0.35
     let g:Lf_CacheDirectory = g:runtime_root . 'cache'
     let g:Lf_ShowRelativePath = 1
@@ -416,7 +416,7 @@ if index(g:bundle_groups, 'deoplete') >= 0
     " deoplete
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#complete_method = 'omnifunc'
-    inoremap <expr> <c-space>  deoplete#mappings#manual_complete()
+    inoremap <silent><expr> <c-space>  deoplete#mappings#manual_complete()
 endif
 " }}} bundle group: deoplete
 

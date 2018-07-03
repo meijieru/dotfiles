@@ -6,7 +6,7 @@ let g:maplocalleader = ' '
 let g:root_markers = ['.svn', '.git', '.root', '.project'] 
 let g:vim_config_root = fnamemodify(expand('<sfile>'), ':h')
 let g:runtime_root = expand('~/.local/share/nvim/site/')
-let g:bundle_groups = ['simple', 'basic', 'high', 'ale', 'deoplete', 'lsp', 'vcs', 'airline', 'auxlib']
+let g:bundle_groups = ['simple', 'basic', 'high', 'ale', 'ycm', 'vcs', 'airline', 'auxlib']
 
 " speed up startup
 let g:python_host_prog = '/usr/bin/python2'
