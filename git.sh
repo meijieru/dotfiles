@@ -15,7 +15,7 @@ elif [ $1 = "pull" ]; then
     git checkout master;
     git pull origin master;
     git checkout server;
-    git reset --hard master;
+    git rebase master;
     git pull origin server;
     echo "pull succeed";
 else
