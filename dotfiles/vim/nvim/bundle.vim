@@ -113,15 +113,6 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:Lf_MruMaxFiles = 2048
     let g:Lf_StlColorscheme = 'gruvbox'
     let g:Lf_PreviewResult = {'Function':1, 'BufTag':0}
-    let g:Lf_NormalMap = {
-                \ 'File':   [['<ESC>', ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
-                \ 'Buffer': [['<ESC>', ':exec g:Lf_py "bufExplManager.quit()"<CR>']],
-                \ 'Mru':    [['<ESC>', ':exec g:Lf_py "mruExplManager.quit()"<CR>']],
-                \ 'Tag':    [['<ESC>', ':exec g:Lf_py "tagExplManager.quit()"<CR>']],
-                \ 'Function':    [['<ESC>', ':exec g:Lf_py "functionExplManager.quit()"<CR>']],
-                \ "BufTag":    [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<CR>']],
-                \ 'Colorscheme':    [['<ESC>', ':exec g:Lf_py "colorschemeExplManager.quit()"<CR>']],
-                \ }
 
     " asyncrun
     function! CmakeBuild()
