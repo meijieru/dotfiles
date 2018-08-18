@@ -91,6 +91,7 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
     Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
     Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
+    Plug 'cespare/vim-toml', { 'for': 'toml' }
 
     " startify
     let g:startify_change_to_dir = 0
