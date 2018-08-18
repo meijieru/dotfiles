@@ -436,7 +436,9 @@ call plug#end()
 
 " {{{ Post process
 if index(g:bundle_groups, 'airline') >= 0
-    let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+    if exists("g:asyncrun_status")
+        let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+    endif
 endif
 
 " {{{ bundle group: auxlib
