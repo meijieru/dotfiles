@@ -21,6 +21,8 @@
   - texlive-pictures
   - texlive-fontsextra
 
+  - rust
+
   - cython
   - ipython
   - jupyter

@@ -32,8 +32,10 @@
   - perl-rename
   - aria2
   - mlocate
+  - tldr
 
   - yakuake
+  - spectacle
   - htop
   - sshfs
   - tmux
