@@ -170,7 +170,6 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'honza/vim-snippets'
     Plug 'kshenoy/vim-signature'
     Plug 'wakatime/vim-wakatime'
-    Plug 'mg979/vim-visual-multi'
     Plug 'dyng/ctrlsf.vim'
 
     Plug 'Chiel92/vim-autoformat'
@@ -269,6 +268,7 @@ endif
 
 " {{{ bundle group: optional
 if index(g:bundle_groups, 'optional') >= 0
+    Plug 'mg979/vim-visual-multi'
     Plug 'tpope/vim-projectionist'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-scriptease'
@@ -354,6 +354,7 @@ if index(g:bundle_groups, 'ycm') >= 0
     let g:ycm_confirm_extra_conf = 0
     let g:ycm_goto_buffer_command = 'vertical-split'
     let g:ycm_error_symbol = '✗'
+    let g:ycm_python_binary_path = g:python3_host_prog
 
     " command alias for youcompleteme
     nnoremap <leader>gi :YcmCompleter GoToInclude<CR>

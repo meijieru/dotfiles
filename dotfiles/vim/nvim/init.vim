@@ -111,6 +111,7 @@ else
     highlight ColorColumn ctermbg=230 guibg=#f9f5d7
 endif
 nnoremap <F1> :call auxlib#toggle_colorcolumn()<CR>
+inoremap <F1> <C-o>:call auxlib#toggle_colorcolumn()<CR>
 
 " for error highlight
 highlight clear SpellBad

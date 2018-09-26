@@ -34,7 +34,7 @@ if platform.system() == 'Linux':
 # which is required for compiling the standard library, and to 'c++11' for older
 # versions.
 if platform.system() != 'Windows':
-    flags.append('-std=c++11')
+    flags.append('-std=c++14')
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
