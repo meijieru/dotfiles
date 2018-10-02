@@ -34,3 +34,5 @@ export PYTHONPATH=$PYTHONPATH
 
 export GTAGSLABEL='native-pygments'
 export GTAGSCONF=$HOME/.config/gtags.conf
+
+export XAUTHORITY=$HOME/.Xauthority
