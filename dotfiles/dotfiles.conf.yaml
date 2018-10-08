@@ -17,6 +17,9 @@
     ~/.extra.sh: dotfiles/profile.d/extra.sh
     ~/.functions.sh: dotfiles/profile.d/functions.sh
 
+    # ssh
+    ~/.ssh/config: dotfiles/ssh/config
+
     # vim
     ~/.config/nvim: dotfiles/vim/nvim
     ~/.config/oni/config.js: ./dotfiles/vim/config.js

@@ -1,0 +1,16 @@
+Host shadowsocks
+HostName 159.65.109.97
+User jrmei
+Port 22
+
+Host diva_8gpu
+HostName 10.99.69.33
+User meijieru
+Port 22
+
+Host diva_4gpu
+HostName 10.161.159.79
+User meijieru
+Port 22
+LocalForward 8888 10.161.159.79:9999
+ForwardX11 yes
