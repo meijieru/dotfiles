@@ -14,3 +14,8 @@ User meijieru
 Port 22
 LocalForward 8888 10.161.159.79:9999
 ForwardX11 yes
+
+Host fb-cluster
+HostName yuille-fb-head.win.ad.jhu.edu
+User jmei8
+Port 22

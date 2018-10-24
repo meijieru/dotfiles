@@ -106,13 +106,13 @@ if index(g:bundle_groups, 'basic') >= 0
 
     let g:Lf_RootMarkers = g:root_markers
     let g:Lf_WorkingDirectoryMode = 'ac'
+    let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_WindowHeight = 0.35
     let g:Lf_CacheDirectory = g:runtime_root . 'cache'
     let g:Lf_ShowRelativePath = 1
-    let g:Lf_StlColorscheme = 'default'
+    let g:Lf_StlColorscheme = 'gruvbox'
     let g:Lf_StlSeparator = { 'left': '', 'right': '' }
     let g:Lf_MruMaxFiles = 2048
-    let g:Lf_StlColorscheme = 'gruvbox'
     let g:Lf_PreviewResult = {'Function':1, 'BufTag':0}
 
     " asyncrun
