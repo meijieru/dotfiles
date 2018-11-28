@@ -333,7 +333,7 @@ endif
 
 " {{{ bundle group: ycm
 if index(g:bundle_groups, 'ycm') >= 0
-    Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
+    Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
 
     let g:ycm_key_invoke_completion = '<C-Space>'
     let g:ycm_key_list_select_completion=['<c-n>']

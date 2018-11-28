@@ -17,6 +17,7 @@ flags = [
     '/usr/include/boost',
     '-isystem',
     '/usr/local/include',
+    # relative paths are from directory of this config file
     '-I',
     'include',
     '-I',
@@ -24,6 +25,11 @@ flags = [
     '-I',
     '.',
 ]
+
+if 'ANACONDA_HOME' in os.environ:
+    flags.extend(
+        ['-isystem',
+         os.path.join(os.environ['ANACONDA_HOME'], 'include')])
 
 if platform.system() == 'Linux':
     sys_cpp_dir = '/usr/include/c++'

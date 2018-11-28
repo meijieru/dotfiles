@@ -12,5 +12,9 @@ if [[ $(uname -r) =~ Microsoft$ ]]; then
 
     export DISPLAY=localhost:0 
     export LIBGL_ALWAYS_INDIRECT=1
-	export GDK_SCALE=2
+    export GDK_SCALE=2
 fi
+
+# load torch
+export TORCH_HOME=$HOME/lib/torch
+[ -f $TORCH_HOME/install/bin/torch-activate ] && \. $TORCH_HOME/install/bin/torch-activate

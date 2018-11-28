@@ -7,6 +7,7 @@ Host diva_8gpu
 HostName 10.99.69.33
 User meijieru
 Port 22
+ForwardX11 yes
 
 Host diva_4gpu
 HostName 10.161.159.79
