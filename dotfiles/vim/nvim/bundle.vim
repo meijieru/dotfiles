@@ -85,7 +85,6 @@ if index(g:bundle_groups, 'basic') >= 0
     Plug 'skywind3000/asyncrun.vim'
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
-    Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
     Plug 'vim-python/python-syntax', { 'for': ['python'] }
     Plug 'dccmx/google-style.vim', { 'for': ['c', 'cpp', 'python'] }
@@ -283,6 +282,7 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'liuchengxu/space-vim-dark'
     Plug 'sillybun/vim-repl'
     Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
+    Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
 
     " nerdtree
     let g:NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
@@ -395,6 +395,17 @@ if index(g:bundle_groups, 'lsp') >= 0
     nnoremap <silent> <leader>gr :call LanguageClient_textDocument_references()<CR>
 endif
 " }}} bundle group: lsp
+"
+" {{{ bundle group: coc
+if index(g:bundle_groups, 'coc') >= 0
+    if has('nvim')
+        Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+    else
+        Plug 'neoclide/vim-node-rpc'
+        Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+    endif
+endif
+" }}} bundle group: coc
 
 " {{{ bundle group: deoplete
 if index(g:bundle_groups, 'deoplete') >= 0
