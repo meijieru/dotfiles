@@ -404,6 +404,29 @@ if index(g:bundle_groups, 'coc') >= 0
         Plug 'neoclide/vim-node-rpc'
         Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
     endif
+
+    nnoremap <silent> gd <Plug>(coc-definition)
+    nnoremap <silent> gy <Plug>(coc-type-definition)
+    nnoremap <silent> gi <Plug>(coc-implementation)
+    nnoremap <silent> gr <Plug>(coc-references)
+    nnoremap <leader>rn <Plug>(coc-rename)
+
+    " Use K for show documentation in preview window
+    function! s:show_documentation()
+        if &filetype == 'vim'
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+        endif
+    endfunction
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+    " Highlight symbol under cursor on CursorHold
+    " autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    " Remap for format selected region
+    " vmap <leader>f  <Plug>(coc-format-selected)
+    " nmap <leader>f  <Plug>(coc-format-selected)
 endif
 " }}} bundle group: coc
 
