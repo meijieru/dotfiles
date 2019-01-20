@@ -11,9 +11,11 @@ if [[ $(uname -r) =~ Microsoft$ ]]; then
     umask 022
 
     export DISPLAY=localhost:0 
-    export LIBGL_ALWAYS_INDIRECT=1
     export GDK_SCALE=2
     export QT_SCALE_FACTOR=2
+
+	# otherwise opengl program may failed
+    export LIBGL_ALWAYS_INDIRECT=0
 fi
 
 # load torch
