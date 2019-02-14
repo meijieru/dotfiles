@@ -39,7 +39,7 @@ def setup(vim, level, output_file=None, overwrite=0):
         try:
             import pkg_resources
 
-            neovim_version = pkg_resources.get_distribution('neovim').version
+            neovim_version = pkg_resources.get_distribution('pynvim').version
         except ImportError:
             neovim_version = 'unknown'
 

@@ -20,3 +20,13 @@ Host fb-cluster
 HostName yuille-fb-head.win.ad.jhu.edu
 User jmei8
 Port 22
+
+Host nas_local
+HostName 10.0.0.80
+User jrmei
+Port 22
+
+Host nas
+HostName 68.84.9.76
+User jrmei
+Port 22

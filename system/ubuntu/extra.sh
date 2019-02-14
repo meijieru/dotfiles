@@ -1,7 +1,7 @@
 # ccat
 ccat_url=https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
-wget "$ccat_url" /tmp/ccat.tar.gz
-tar xzf -C /tmp
+wget "$ccat_url" --output-document="/tmp/ccat.tar.gz"
+tar xzf /tmp/ccat.tar.gz -C /tmp
 cp /tmp/linux-amd64-1.1.0/ccat ~/.local/bin
 
 # universal-ctags

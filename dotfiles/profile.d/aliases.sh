@@ -33,6 +33,10 @@ alias cat='ccat'
 alias proxychains='proxychains -q'
 alias copytoclipboard='xclip -selection c'
 alias pastefromclipboard='xclip -o -selection c'
+alias zc='z -c'      # match subdir of current dir
+# alias zz='z -i'      # iteratively
+alias zf='z -I'      # fuzzy finder
+alias zb='z -b'      # jump to parent dir
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
