@@ -5,7 +5,7 @@
   - dolphin-plugins
   - gwenview
   - foxitreader
-  - mendeleydesktop
+  # - mendeleydesktop
   - calibre
   - shadowsocks-qt5
   - proxychains-ng

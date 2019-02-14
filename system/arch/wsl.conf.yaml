@@ -1,0 +1,34 @@
+pacman:
+  - openssh
+  - sudo
+  - xclip
+  - zsh
+
+  - adobe-source-han-sans-otc-fonts
+  - adobe-source-code-pro-fonts
+  - noto-fonts-emoji
+
+  - tmux
+  - htop
+  - fzf
+  - git
+  - cloc
+  - tree
+  - the_silver_searcher
+  - neovim
+  - python-neovim
+  - clang
+  - cmake
+  - boost
+  - flake8
+  - yapf
+  - universal-ctags-git
+  - global
+
+  - python-pip
+  - python-yaml
+  - python-scipy
+  - python-matplotlib
+  - python-ipdb
+  - ipython
+  - cython

@@ -26,7 +26,7 @@ class bcolors(object):
 
 if __name__ == "__main__":
     with open(sys.argv[1], 'r') as f:
-        data = yaml.load(f)[0]
+        data = yaml.load(f)
 
     if 'pacman' in data:
         pkg_list = data['pacman']

@@ -6,8 +6,6 @@
   - efibootmgr
   - os-prober
   - intel-ucode
-  - openssh
-  - sudo
   - ntfs-3g
   - exfat-utils
   - pulseaudio-bluetooth
@@ -28,20 +26,18 @@
   - sddm
   - sddm-kcm
   - systemd-kcm
-  - xclip
-
-  - zsh
-  - fzf
-
-  - adobe-source-han-serif-cn-fonts
-  - adobe-source-han-serif-tw-fonts
-  - adobe-source-han-sans-cn-fonts
-  - adobe-source-han-sans-tw-fonts
-  - adobe-source-code-pro-fonts
-  - noto-fonts-emoji
 
   - fcitx5-git
   - fcitx5-chinese-addons-git
   - fcitx5-qt5-git
   - fcitx5-gtk-git
   - kcm-fcitx5-git
+
+  - xclip
+  - openssh
+  - sudo
+  - zsh
+  - fzf
+  - adobe-source-han-sans-otc-fonts
+  - adobe-source-code-pro-fonts
+  - noto-fonts-emoji
