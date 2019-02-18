@@ -28,6 +28,11 @@ export MANPAGER="less -X"
 # term
 export TERM="xterm-256color"
 
+# https://www.scm.com/doc/Installation/Remote_GUI.html
+if [ -f /usr/lib/x86_64-linux-gnu/mesa/libGL.so ]; then
+	export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/mesa/libGL.so
+fi
+
 # Customize to your needs...
 export ANACONDA_HOME=$HOME/lib/anaconda
 export PATH=$HOME/.local/bin/:$HOME/lib/anaconda/bin:$PATH:/usr/local/cuda/bin
