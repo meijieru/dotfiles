@@ -173,7 +173,6 @@ if index(g:bundle_groups, 'high') >= 0
 
     Plug 'Chiel92/vim-autoformat'
     Plug 'simnalamburt/vim-mundo'
-    Plug 'Shougo/echodoc.vim'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'
     Plug 'SirVer/ultisnips'
@@ -283,6 +282,7 @@ if index(g:bundle_groups, 'optional') >= 0
     Plug 'sillybun/vim-repl'
     Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
     Plug 'lilydjwg/fcitx.vim', { 'for': ['markdown', 'tex'] }
+    Plug 'Shougo/echodoc.vim'
 
     " nerdtree
     let g:NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
@@ -404,12 +404,19 @@ if index(g:bundle_groups, 'coc') >= 0
         Plug 'neoclide/vim-node-rpc'
         Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
     endif
+    " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 
     nnoremap <silent> gd <Plug>(coc-definition)
     nnoremap <silent> gy <Plug>(coc-type-definition)
     nnoremap <silent> gi <Plug>(coc-implementation)
     nnoremap <silent> gr <Plug>(coc-references)
     nnoremap <leader>rn <Plug>(coc-rename)
+    inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " Use K for show documentation in preview window
     function! s:show_documentation()

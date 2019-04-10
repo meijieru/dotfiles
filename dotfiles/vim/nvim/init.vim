@@ -6,7 +6,7 @@ let g:maplocalleader = ' '
 let g:root_markers = ['.svn', '.git', '.root', '.project'] 
 let g:vim_config_root = fnamemodify(expand('<sfile>'), ':h')
 let g:runtime_root = expand('~/.local/share/nvim/site/')
-let g:bundle_groups = ['simple', 'basic', 'high', 'ale', 'ycm', 'vcs', 'airline', 'auxlib']
+let g:bundle_groups = ['simple', 'basic', 'high', 'ale', 'coc', 'vcs', 'airline', 'auxlib']
 
 " speed up startup
 if strlen($ANACONDA_HOME) ==# 0
