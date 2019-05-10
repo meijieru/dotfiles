@@ -30,3 +30,8 @@ Host nas
 HostName 68.84.9.76
 User jrmei
 Port 22
+
+Host ccvl19
+HostName 10.99.69.38
+User meijieru
+Port 22
