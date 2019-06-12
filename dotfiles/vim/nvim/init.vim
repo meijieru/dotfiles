@@ -30,7 +30,7 @@ filetype indent on
 filetype plugin on
 
 set autoread                " auto reload the file when the file is modified
-set shortmess=atI           " start-up information
+set shortmess=actI          " start-up information
 
 set backup
 set backupext=.bak
@@ -69,6 +69,7 @@ set showcmd
 set number
 set nowrap
 set scrolloff=5 " when scroll the screen, the lines remain to show
+set signcolumn=yes
 
 " command line's height
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P

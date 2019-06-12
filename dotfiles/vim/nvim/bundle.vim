@@ -410,12 +410,17 @@ if index(g:bundle_groups, 'coc') >= 0
     Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 
-    nnoremap <silent> gd <Plug>(coc-definition)
-    nnoremap <silent> gy <Plug>(coc-type-definition)
-    nnoremap <silent> gi <Plug>(coc-implementation)
-    nnoremap <silent> gr <Plug>(coc-references)
-    nnoremap <leader>rn <Plug>(coc-rename)
+    " Smaller updatetime for CursorHold & CursorHoldI
+    set updatetime=300
+
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    nmap <leader>rn <Plug>(coc-rename)
     inoremap <silent><expr> <c-space> coc#refresh()
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " Use K for show documentation in preview window
@@ -423,13 +428,13 @@ if index(g:bundle_groups, 'coc') >= 0
         if &filetype == 'vim'
             execute 'h '.expand('<cword>')
         else
-            call CocAction('doHover')
+            call CocActionAsync('doHover')
         endif
     endfunction
     nnoremap <silent> K :call <SID>show_documentation()<CR>
 
     " Highlight symbol under cursor on CursorHold
-    " autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 
     " Remap for format selected region
     " vmap <leader>f  <Plug>(coc-format-selected)
