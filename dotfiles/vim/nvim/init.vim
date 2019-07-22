@@ -234,4 +234,8 @@ if has('nvim')
     autocmd VimLeave * set guicursor=a:block-blinkon0
 end
 
+if has('nvim') || has("patch-8.1.0360")
+    set diffopt+=internal,algorithm:patience
+endif
+
 " }}} Environment-dependent Settings
