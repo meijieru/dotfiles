@@ -8,5 +8,9 @@
          "cacheDirectory": "/tmp/ccls"
        }
     }
-  }
+  },
+
+  "python.jediEnabled": false,
+
+  "coc.preferences.diagnostic.displayByAle": true,
 }

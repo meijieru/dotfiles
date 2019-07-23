@@ -113,6 +113,14 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:Lf_StlSeparator = { 'left': '', 'right': '' }
     let g:Lf_MruMaxFiles = 2048
     let g:Lf_PreviewResult = {'Function':1, 'BufTag':0}
+    let g:Lf_NormalMap = {
+                \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
+                \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<cr>']],
+                \ "Mru": [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<cr>']],
+                \ "Tag": [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<cr>']],
+                \ "BufTag": [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
+                \ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
+                \ }
 
     " asyncrun
     function! CmakeBuild()
