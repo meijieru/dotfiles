@@ -40,6 +40,7 @@
   - sshfs
   - tmux
   - git
-  - cloc
+  - tokei
   - tree
-  - the_silver_searcher
+  - ripgrep
+  - fd

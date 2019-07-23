@@ -12,9 +12,10 @@ pacman:
   - htop
   - fzf
   - git
-  - cloc
+  - tokei
   - tree
-  - the_silver_searcher
+  - ripgrep
+  - fd
   - neovim
   - python-neovim
   - clang
