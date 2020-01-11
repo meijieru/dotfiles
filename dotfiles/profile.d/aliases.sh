@@ -25,14 +25,8 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 # Customize to your needs...
 alias mk='make'
-alias tmux='tmux -2'
 alias matlab='matlab -nodesktop -nosplash'
-alias vim='nvim'
-alias vi='nvim'
-alias cat='ccat'
 alias proxychains='proxychains -q'
-alias copytoclipboard='xclip -selection c'
-alias pastefromclipboard='xclip -o -selection c'
 alias zc='z -c'      # match subdir of current dir
 # alias zz='z -i'      # iteratively
 alias zf='z -I'      # fuzzy finder
@@ -42,3 +36,20 @@ alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
+
+# TODO(meijieru): macos compatible
+alias copytoclipboard='xclip -selection c'
+alias pastefromclipboard='xclip -o -selection c'
+
+if [ -x "$(command -v ccat)" ]; then
+	alias cat='ccat'
+fi
+if [ -x "$(command -v tmux-next)" ]; then
+	alias tmux='tmux-next -2'
+else
+	alias tmux='tmux -2'
+fi
+if [ -x "$(command -v nvim)" ]; then
+	alias vim='nvim'
+	alias vi='nvim'
+fi
