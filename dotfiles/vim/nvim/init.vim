@@ -30,7 +30,8 @@ filetype indent on
 filetype plugin on
 
 set autoread                " auto reload the file when the file is modified
-set shortmess=actI          " start-up information
+set shortmess=actIT          " start-up information
+set cmdheight=1
 
 set backup
 set backupext=.bak
