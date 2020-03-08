@@ -207,6 +207,29 @@ if index(g:bundle_groups, 'high') >= 0
     let g:gutentags_project_root = g:root_markers
     let s:vim_tags = g:runtime_root . 'cache/tags'
     let g:gutentags_cache_dir = s:vim_tags
+    let g:gutentags_ctags_exclude = [
+                \  '*.git', '*.svn', '*.hg',
+                \  'cache', 'build', 'dist', 'bin', 'node_modules', 'bower_components',
+                \  '*-lock.json',  '*.lock',
+                \  '*.min.*',
+                \  '*.bak',
+                \  '*.zip',
+                \  '*.pyc',
+                \  '*.class',
+                \  '*.sln',
+                \  '*.csproj', '*.csproj.user',
+                \  '*.tmp',
+                \  '*.cache',
+                \  '*.vscode',
+                \  '*.pdb',
+                \  '*.exe', '*.dll', '*.bin',
+                \  '*.mp3', '*.ogg', '*.flac',
+                \  '*.swp', '*.swo',
+                \  '.DS_Store', '*.plist',
+                \  '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png', '*.svg',
+                \  '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+                \  '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx', '*.xls',
+                \]
 
     let g:gutentags_modules = []
     if executable('ctags')
@@ -442,7 +465,9 @@ if index(g:bundle_groups, 'coc') >= 0
     nnoremap <silent> K :call <SID>show_documentation()<CR>
 
     " Highlight symbol under cursor on CursorHold
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+    if exists(':CocActionAsync')
+        autocmd CursorHold * silent call CocActionAsync('highlight')
+    endif
 
     " Remap for format selected region
     " vmap <leader>f  <Plug>(coc-format-selected)

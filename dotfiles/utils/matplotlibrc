@@ -1,1 +1,1 @@
-backend : Qt5Agg   # use qt5 with antigrain (agg) rendering
+backend : Agg   # use qt5 with antigrain (agg) rendering
