@@ -104,7 +104,7 @@ set nrformats=
 " theme
 set termguicolors
 set background=light
-colorscheme gruvbox
+colorscheme onedark
 
 " visual enhance
 " set cursorcolumn
@@ -189,10 +189,10 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 "Smart way to move between windows
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
+nnoremap <M-j> <C-W>j
+nnoremap <M-k> <C-W>k
+nnoremap <M-h> <C-W>h
+nnoremap <M-l> <C-W>l
 
 "Reselect visual block after indent/outdent.
 vnoremap < <gv

@@ -3,6 +3,7 @@ pacman:
   - sudo
   - xclip
   - zsh
+  - lua
 
   - adobe-source-han-sans-otc-fonts
   - adobe-source-code-pro-fonts
@@ -18,6 +19,9 @@ pacman:
   - fd
   - neovim
   - python-neovim
+  - nodejs
+  - yarn
+  - npm
   - clang
   - cmake
   - boost

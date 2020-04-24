@@ -1,5 +1,15 @@
 scriptencoding utf-8
 
+" TODO(meijieru):
+" 1. `~` for returning to project root
+" config terminal
+" config coc scroll
+" optimize key mapping
+" config window switch
+" config linuxbrew
+" config visual-multi
+" config vim-which-key
+
 " Install vim-plug if we don't already have it
 if empty(glob(g:runtime_root . 'autoload/plug.vim'))
     " Ensure all needed directories exist  (Thanks @kapadiamush)
@@ -82,6 +92,8 @@ endif
 if index(g:bundle_groups, 'basic') >= 0
     Plug 'mhinz/vim-startify'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'skywind3000/vim-terminal-help'
+    Plug 'skywind3000/asynctasks.vim'
     Plug 'skywind3000/asyncrun.vim'
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
@@ -109,7 +121,7 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:Lf_WindowHeight = 0.35
     let g:Lf_CacheDirectory = g:runtime_root . 'cache'
     let g:Lf_ShowRelativePath = 1
-    let g:Lf_StlColorscheme = 'gruvbox'
+    " let g:Lf_StlColorscheme = 'gruvbox'
     let g:Lf_StlSeparator = { 'left': '', 'right': '' }
     let g:Lf_MruMaxFiles = 2048
     let g:Lf_PreviewResult = {'Function':1, 'BufTag':0}
@@ -121,6 +133,15 @@ if index(g:bundle_groups, 'basic') >= 0
                 \ "BufTag": [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
                 \ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
                 \ }
+
+    " asynctasks
+    let g:asynctasks_term_reuse = 1
+    let g:asynctasks_term_pos = 'tab'
+
+    noremap <silent><F5> :AsyncTask file-run<cr>
+    noremap <silent><F6> :AsyncTask file-build<cr>
+    noremap <silent><f7> :AsyncTask project-run<cr>
+    noremap <silent><f8> :AsyncTask project-build<cr>
 
     " asyncrun
     function! CmakeBuild()
@@ -138,9 +159,9 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:asyncrun_rootmarks = g:root_markers + ['_darcs', 'build.xml'] 
     let g:asyncrun_open = 10
     let g:asyncrun_status = ''
-    nnoremap <silent> <F5> :call CmakeBuild()<cr>
-    nnoremap <silent> <F6> :AsyncRun -cwd=<root>/build -raw make runtest <cr>
-    nnoremap <silent> <F7> :AsyncRun -cwd=<root>/build -raw make run <cr>
+    " nnoremap <silent> <F5> :call CmakeBuild()<cr>
+    " nnoremap <silent> <F6> :AsyncRun -cwd=<root>/build -raw make runtest <cr>
+    " nnoremap <silent> <F7> :AsyncRun -cwd=<root>/build -raw make run <cr>
     nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
@@ -439,6 +460,7 @@ if index(g:bundle_groups, 'coc') >= 0
     Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 
     " Smaller updatetime for CursorHold & CursorHoldI
