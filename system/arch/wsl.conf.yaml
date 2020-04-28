@@ -5,10 +5,6 @@ pacman:
   - zsh
   - lua
 
-  - adobe-source-han-sans-otc-fonts
-  - adobe-source-code-pro-fonts
-  - noto-fonts-emoji
-
   - tmux
   - htop
   - fzf
@@ -37,3 +33,13 @@ pacman:
   - python-ipdb
   - ipython
   - cython
+
+  # optional
+  - i3-wm
+  - python-pyqt5
+  - adobe-source-code-pro-fonts
+  # - adobe-source-han-sans-otc-fonts
+  # - noto-fonts-emoji
+
+  # ssh via proxy
+  - corkscrew
