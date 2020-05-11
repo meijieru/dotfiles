@@ -508,12 +508,13 @@ if index(g:bundle_groups, 'coc') >= 0
         endif
     endfunction
     nnoremap <silent> K :call <SID>show_documentation()<CR>
-    autocmd User CocOpenFloat :setl foldlevel=20 foldcolumn=0
 
-    " Highlight symbol under cursor on CursorHold
-    if exists(':CocActionAsync')
-        autocmd CursorHold * silent call CocActionAsync('highlight')
-    endif
+    augroup coc
+        " no folding for hover
+        autocmd User CocOpenFloat :setl foldlevel=20 foldcolumn=0
+        " Highlight symbol under cursor on CursorHold
+        autocmd CursorHold * if exists('*CocActionAsync') | call CocActionAsync('highlight') | endif
+    augroup end
 
     " Remap for format selected region
     " vmap <leader>f  <Plug>(coc-format-selected)
