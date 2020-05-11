@@ -113,26 +113,37 @@ if index(g:bundle_groups, 'basic') >= 0
     nnoremap <leader>fm :Leaderf mru<cr>
     nnoremap <leader>fc :Leaderf! function<cr>
     nnoremap <leader>fl :Leaderf! bufTag<cr>
-    nnoremap <leader>ft :Leaderf tag<cr>
+    " nnoremap <leader>ft :Leaderf tag<cr>
+    nnoremap <leader>fs :Leaderf searchHistory<cr>
+    nnoremap <leader>fh :Leaderf cmdHistory<cr>
+    nnoremap <leader>fp :Leaderf --recall<cr>
+    nnoremap <leader>fgc :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+    nnoremap <leader>fge :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+    nnoremap <leader>fgp :<C-U>Leaderf! rg --recall<CR>
+    xnoremap <leader>fge :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 
     let g:Lf_RootMarkers = g:root_markers
-    let g:Lf_WorkingDirectoryMode = 'ac'
+    let g:Lf_WorkingDirectoryMode = 'Ac'
     let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_WindowHeight = 0.35
     let g:Lf_CacheDirectory = g:runtime_root . 'cache'
-    let g:Lf_ShowRelativePath = 1
     " let g:Lf_StlColorscheme = 'gruvbox'
     let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-    let g:Lf_MruMaxFiles = 2048
     let g:Lf_PreviewResult = {'Function':1, 'BufTag':0}
-    let g:Lf_NormalMap = {
-                \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
-                \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<cr>']],
-                \ "Mru": [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<cr>']],
-                \ "Tag": [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<cr>']],
-                \ "BufTag": [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
-                \ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
-                \ }
+    let g:Lf_IgnoreCurrentBufferName = 1
+    let g:Lf_PreviewInPopup = 1
+    let g:Lf_WindowPosition = 'popup'
+    let g:Lf_PopupColorscheme = 'default'
+    let g:Lf_ShowDevIcons = 0
+    " let g:Lf_NormalMap = {
+    "             \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
+    "             \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<cr>']],
+    "             \ "Mru": [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<cr>']],
+    "             \ "Tag": [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<cr>']],
+    "             \ "BufTag": [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
+    "             \ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
+    "             \ "Rg": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
+    "             \ }
 
     " asynctasks
     let g:asynctasks_term_reuse = 1
@@ -378,6 +389,8 @@ if index(g:bundle_groups, 'ale') >= 0
     let g:ale_echo_msg_format = '[%linter%] %code: %%s'
     let g:ale_lint_on_text_changed = 'normal'
     let g:ale_lint_on_insert_leave = 1
+    " TODO(meijieru): replace echo and use format
+    let g:ale_virtualtext_cursor = 1
 
     let g:ale_cpp_clang_options = '-std=c++11 -Wall'
 endif
@@ -466,25 +479,36 @@ if index(g:bundle_groups, 'coc') >= 0
     " Smaller updatetime for CursorHold & CursorHoldI
     set updatetime=300
 
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
+    nmap <silent>gd <Plug>(coc-definition)
+    nmap <silent>gy <Plug>(coc-type-definition)
+    nmap <silent>gi <Plug>(coc-implementation)
+    nmap <silent>gr <Plug>(coc-references)
     nmap <leader>rn <Plug>(coc-rename)
+    " nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+    " nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
     inoremap <silent><expr> <c-space> coc#refresh()
     " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
     " Coc only does snippet and additional edit on confirm.
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+    " position. Coc only does snippet and additional edit on confirm.
+    " if exists('*complete_info')
+    if v:false  " FIXME(meijieru)
+        inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : \<C-g>u\<CR>"
+    else
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    endif
 
     " Use K for show documentation in preview window
     function! s:show_documentation()
-        if &filetype == 'vim'
+        if (index(['vim','help'], &filetype) >= 0)
             execute 'h '.expand('<cword>')
         else
-            call CocActionAsync('doHover')
+            call CocAction('doHover')
         endif
     endfunction
     nnoremap <silent> K :call <SID>show_documentation()<CR>
+    autocmd User CocOpenFloat :setl foldlevel=20 foldcolumn=0
 
     " Highlight symbol under cursor on CursorHold
     if exists(':CocActionAsync')
