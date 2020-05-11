@@ -558,6 +558,44 @@ if index(g:bundle_groups, 'airline') >= 0
 endif
 " }}} bundle group: airline
 
+" {{{ bundle group: vimspector
+if index(g:bundle_groups, 'vimspector') >= 0
+    Plug 'puremourning/vimspector', { 'do': './install_gadget.py --enable-c --enable-python --enable-bash' }
+
+    function! ToggleDebugMapping()
+        if len(g:pre_vimspector_mapping) > 0
+            call auxlib#restore_mappings(g:pre_vimspector_mapping)
+            let g:pre_vimspector_mapping = {}
+        else
+            let l:vimspector_keyset_mappings = {
+                        \ 'HUMAN': {
+                        \    '<F5>':         '<Plug>VimspectorContinue',
+                        \    '<F3>':         '<Plug>VimspectorStop',
+                        \    '<F4>':         '<Plug>VimspectorRestart',
+                        \    '<F6>':         '<Plug>VimspectorPause',
+                        \    '<F9>':         '<Plug>VimspectorToggleBreakpoint',
+                        \    '<leader><F9>': '<Plug>VimspectorToggleConditionalBreakpoint',
+                        \    '<F8>':         '<Plug>VimspectorAddFunctionBreakpoint',
+                        \    '<F10>':        '<Plug>VimspectorStepOver',
+                        \    '<F11>':        '<Plug>VimspectorStepInto',
+                        \    '<F12>':        '<Plug>VimspectorStepOut',
+                        \ },
+                        \ }
+            let l:vimspector_keyset = l:vimspector_keyset_mappings['HUMAN']
+
+            let g:pre_vimspector_mapping = auxlib#save_mappings(keys(l:vimspector_keyset), 'n', 1)
+            for [key, value] in items(l:vimspector_keyset)
+                let l:command =  'nmap ' . key . ' ' . value
+                execute l:command
+            endfor
+        endif
+    endfunction
+
+    let g:pre_vimspector_mapping = {}
+    nnoremap <leader><F5> :call ToggleDebugMapping()<cr>
+endif
+" }}} bundle group: vimspector
+
 call plug#end()
 
 " {{{ Post process
