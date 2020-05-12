@@ -16,6 +16,7 @@
     ~/.exports.sh: dotfiles/profile.d/exports.sh
     ~/.extra.sh: dotfiles/profile.d/extra.sh
     ~/.functions.sh: dotfiles/profile.d/functions.sh
+    ~/.p10k.zsh: ./dotfiles/zsh/themes/p10k.zsh
 
     # ssh
     ~/.ssh/config: dotfiles/ssh/config
