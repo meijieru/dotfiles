@@ -103,8 +103,8 @@ set nrformats=
 
 " theme
 set termguicolors
-set background=light
-colorscheme onedark
+set background=dark
+colorscheme gruvbox
 
 " visual enhance
 " set cursorcolumn

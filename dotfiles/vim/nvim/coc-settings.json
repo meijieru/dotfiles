@@ -12,5 +12,5 @@
 
   "python.jediEnabled": false,
 
-  "coc.preferences.diagnostic.displayByAle": true,
+  "diagnostic.displayByAle": true,
 }

@@ -478,6 +478,7 @@ if index(g:bundle_groups, 'coc') >= 0
 
     " Smaller updatetime for CursorHold & CursorHoldI
     set updatetime=300
+    let g:airline#extensions#coc#enabled = 0
 
     nmap <silent>gd <Plug>(coc-definition)
     nmap <silent>gy <Plug>(coc-type-definition)
