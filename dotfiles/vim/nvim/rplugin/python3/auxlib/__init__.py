@@ -34,11 +34,11 @@ class AuxlibHandlers(object):
         self._logger = None
 
     @auxlib_function()
-    def test_python(self):
+    def test_python(self, *args):
         self.vim.command('echo "Hello from auxlib python"')
 
     @auxlib_function()
-    def enable_logging(self, args):
+    def enable_logging(self, *args):
         logging = self.vim.vars['auxlib#_logging']
         logger.setup(self.vim, logging['level'], logging['logfile'],
                      logging['overwrite'])

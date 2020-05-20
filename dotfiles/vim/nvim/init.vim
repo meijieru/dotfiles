@@ -46,7 +46,7 @@ set completeopt=longest,menu " refer to VimTip1228
 let &backupdir = g:runtime_root . 'files/backup'
 let &directory = g:runtime_root . 'files/swap/'
 let &viminfo = '100,n' . g:runtime_root . 'files/info/viminfo'
-let &undodir = g:runtime_root . '/files/undo'
+let &undodir = g:runtime_root . 'files/undo'
 
 
 " No annoying sound on errors

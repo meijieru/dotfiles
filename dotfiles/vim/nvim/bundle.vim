@@ -3,12 +3,8 @@ scriptencoding utf-8
 " TODO(meijieru):
 " 1. `~` for returning to project root
 " config terminal
-" config coc scroll
 " optimize key mapping
-" config window switch
 " config linuxbrew
-" config visual-multi
-" config vim-which-key
 
 " Install vim-plug if we don't already have it
 if empty(glob(g:runtime_root . 'autoload/plug.vim'))
@@ -63,16 +59,16 @@ if index(g:bundle_groups, 'simple') >= 0
     augroup end
 
     " tabular
-    nnoremap <space>a= :Tabularize /=<CR>
-    vnoremap <space>a= :Tabularize /=<CR>
-    nnoremap <space>a/ :Tabularize /\/\//l2c1l0<CR>
-    vnoremap <space>a/ :Tabularize /\/\//l2c1l0<CR>
-    nnoremap <space>a, :Tabularize /,/l0r1<CR>
-    vnoremap <space>a, :Tabularize /,/l0r1<CR>
-    nnoremap <space>al :Tabularize /\|<cr>
-    vnoremap <space>al :Tabularize /\|<cr>
-    nnoremap <space>ar :Tabularize /\|/r1<cr>
-    vnoremap <space>ar :Tabularize /\|/r1<cr>
+    nnoremap <leader>a= :Tabularize /=<CR>
+    vnoremap <leader>a= :Tabularize /=<CR>
+    nnoremap <leader>a/ :Tabularize /\/\//l2c1l0<CR>
+    vnoremap <leader>a/ :Tabularize /\/\//l2c1l0<CR>
+    nnoremap <leader>a, :Tabularize /,/l0r1<CR>
+    vnoremap <leader>a, :Tabularize /,/l0r1<CR>
+    nnoremap <leader>al :Tabularize /\|<cr>
+    vnoremap <leader>al :Tabularize /\|<cr>
+    nnoremap <leader>ar :Tabularize /\|/r1<cr>
+    vnoremap <leader>ar :Tabularize /\|/r1<cr>
 
     " easymotion
     let g:EasyMotion_smartcase = 1
@@ -92,9 +88,11 @@ endif
 if index(g:bundle_groups, 'basic') >= 0
     Plug 'mhinz/vim-startify'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
     Plug 'skywind3000/vim-terminal-help'
     Plug 'skywind3000/asynctasks.vim'
     Plug 'skywind3000/asyncrun.vim'
+    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
     Plug 'tbastos/vim-lua', { 'for': 'lua' }
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
@@ -106,6 +104,16 @@ if index(g:bundle_groups, 'basic') >= 0
 
     " startify
     let g:startify_change_to_dir = 0
+
+    " vim-which-key
+    let g:which_key_use_floating_win = 1
+    let g:which_key_timeout = 300
+    " let g:which_key_floating_opts = { 'row': '-10', 'width': '-10' }
+    nnoremap <silent> <leader>      :<c-u>WhichKey '<leader>'<CR>
+    nnoremap <silent> <localleader>      :<c-u>WhichKey '<localleader>'<CR>
+    augroup vim_which_key
+        autocmd  FileType which_key  :setl foldlevel=20 foldcolumn=0
+    augroup end
 
     " LeaderF
     let g:Lf_ShortcutF = '<leader>ff'
@@ -329,7 +337,6 @@ endif
 
 " {{{ bundle group: optional
 if index(g:bundle_groups, 'optional') >= 0
-    Plug 'mg979/vim-visual-multi'
     Plug 'tpope/vim-projectionist'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-scriptease'
