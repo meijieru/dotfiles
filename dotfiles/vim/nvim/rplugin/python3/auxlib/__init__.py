@@ -52,6 +52,8 @@ class AuxlibHandlers(object):
 
     @neovim.autocmd('filetype', pattern='cpp', sync=False, eval='@%')
     def set_ale_cpp_options(self, buf_name):
+        if 'ycm' not in self.vim.vars['bundle_groups']:
+            return
         ycm_marker = '.ycm_extra_conf.py'
         file_path = os.path.join(os.getcwd(), buf_name)
         file_dir = os.path.dirname(os.path.abspath(file_path))
