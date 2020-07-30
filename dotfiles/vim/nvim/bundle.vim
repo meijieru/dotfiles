@@ -135,7 +135,7 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_WindowHeight = 0.35
     let g:Lf_CacheDirectory = g:runtime_root . 'cache'
-    " let g:Lf_StlColorscheme = 'gruvbox'
+    let g:Lf_StlColorscheme = 'gruvbox'
     let g:Lf_StlSeparator = { 'left': '', 'right': '' }
     let g:Lf_PreviewResult = {'Function':1, 'BufTag':0}
     let g:Lf_IgnoreCurrentBufferName = 1
@@ -218,6 +218,7 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'kshenoy/vim-signature'
     Plug 'wakatime/vim-wakatime'
     Plug 'dyng/ctrlsf.vim'
+    Plug 'liuchengxu/vista.vim'
 
     Plug 'Chiel92/vim-autoformat'
     Plug 'simnalamburt/vim-mundo'
@@ -309,6 +310,21 @@ if index(g:bundle_groups, 'high') >= 0
     let g:ultisnips_python_style = 'google'
     let g:UltiSnipsEditSplit = 'vertical'
     map <leader>us :UltiSnipsEdit<CR>
+
+    " vista.vim
+    function! NearestMethodOrFunction() abort
+        return get(b:, 'vista_nearest_method_or_function', '')
+    endfunction
+
+    set statusline+=%{NearestMethodOrFunction()}
+    let g:vista_sidebar_position = 'vertical topleft'
+    nnoremap <leader>v :Vista!!<cr>
+
+    " By default vista.vim never run if you don't call it explicitly.
+    "
+    " If you want to show the nearest function in your statusline automatically,
+    " you can add the following line to your vimrc
+    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
     " vimtex
     if has('nvim')
