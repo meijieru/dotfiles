@@ -28,9 +28,11 @@ alias mk='make'
 alias matlab='matlab -nodesktop -nosplash'
 alias proxychains='proxychains -q'
 alias zc='z -c'      # match subdir of current dir
-# alias zz='z -i'      # iteratively
-alias zf='z -I'      # fuzzy finder
-alias zb='z -b'      # jump to parent dir
+# alias zz='z -i'      # interactively
+# alias zf='z -I'      # fuzzy finder
+alias zb='z -b'      
+alias zbi='z -b -i'  # jump to parent dir
+alias zbf='z -b -I'  # jump to parent dir using fzf
 
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
