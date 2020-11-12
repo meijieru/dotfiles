@@ -129,6 +129,7 @@ if index(g:bundle_groups, 'basic') >= 0
     nnoremap <leader>fge :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
     nnoremap <leader>fgp :<C-U>Leaderf! rg --recall<CR>
     xnoremap <leader>fge :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+    nnoremap <leader>ft :<C-U>Leaderf! --nowrap task<CR>
 
     let g:Lf_RootMarkers = g:root_markers
     let g:Lf_WorkingDirectoryMode = 'Ac'
@@ -143,6 +144,16 @@ if index(g:bundle_groups, 'basic') >= 0
     let g:Lf_WindowPosition = 'popup'
     let g:Lf_PopupColorscheme = 'default'
     let g:Lf_ShowDevIcons = 0
+    let g:Lf_Extensions = get(g:, 'Lf_Extensions', {})
+    let g:Lf_Extensions.task = {
+                \ 'source': string(function('leaderf#asynctasks#lf_task_source'))[10:-3],
+                \ 'accept': string(function('leaderf#asynctasks#lf_task_accept'))[10:-3],
+                \ 'get_digest': string(function('leaderf#asynctasks#lf_task_digest'))[10:-3],
+                \ 'highlights_def': {
+                \     'Lf_hl_funcScope': '^\S\+',
+                \     'Lf_hl_funcDirname': '^\S\+\s*\zs<.*>\ze\s*:',
+                \ },
+            \ }
     " let g:Lf_NormalMap = {
     "             \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
     "             \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<cr>']],
