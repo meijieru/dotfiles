@@ -426,6 +426,9 @@ if index(g:bundle_groups, 'ale') >= 0
     " TODO(meijieru): replace echo and use format
     let g:ale_virtualtext_cursor = 1
 
+    " https://github.com/dense-analysis/ale/issues/1914#issuecomment-421316065
+    let g:ale_virtualenv_dir_names = []
+
     let g:ale_cpp_clang_options = '-std=c++11 -Wall'
 endif
 " }}} bundle group: ale
