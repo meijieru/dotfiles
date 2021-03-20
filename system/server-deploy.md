@@ -2,9 +2,9 @@
 
 - Add new sudo user on ubuntu.
     ```sh
-    sudo adduser {{username}}
-    sudo usermod -aG sudo {{username}}
-    chsh -s /bin/zsh {{username}}
+    sudo adduser ${username}
+    sudo usermod -aG sudo ${username}
+    chsh -s /bin/zsh ${username}
     ```
 
 - Upload server ssh key.
@@ -24,14 +24,14 @@
     ```sh
     mkdir ~/lib
     cd ~/lib
-    wget {{anaconda_url}}
-    bash {{anaconda_path}}
+    wget ${anaconda_url}
+    bash ${anaconda_path}
     ```
 
 - Install neovim
     - nodejs, download from `https://nodejs.org/zh-cn/download/`
         ```sh
-        cd {{node_root}}
+        cd ${node_root}
         ln -s `realpath bin/node` ~/.local/bin/node
         ln -s `realpath bin/npm` ~/.local/bin/npm
         ln -s `realpath bin/npx` ~/.local/bin/npx
@@ -59,5 +59,5 @@
 - Install tmux
     ```sh
     sudo add-apt-repository ppa:pi-rho/dev
-	sudo apt-get update
+    sudo apt-get update
     ```
