@@ -45,11 +45,12 @@ if index(g:bundle_groups, 'simple') >= 0
     Plug 'Yggdroot/indentLine'
 
     " colorscheme
-    let g:gruvbox_italic = 1
+    let s:colorscheme_italic = 0
+    let g:gruvbox_italic = s:colorscheme_italic
     let g:gruvbox_improved_warnings = 1
     let g:oceanic_next_terminal_bold = 1
-    let g:oceanic_next_terminal_italic = 1
-    let g:onedark_terminal_italics = 1
+    let g:oceanic_next_terminal_italic = s:colorscheme_italic
+    let g:onedark_terminal_italics = s:colorscheme_italic
 
     " auto-pairs
     let g:AutoPairsMapCh = 0 " Interfere with <left>
