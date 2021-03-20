@@ -487,9 +487,7 @@ endif
 " {{{ bundle group: airline
 if index(g:bundle_groups, 'airline') >= 0
     Plug 'vim-airline/vim-airline'
-
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#whitespace#enabled = 0
+    LoadScript site/bundle/airline.vim
 endif
 " }}} bundle group: airline
 
@@ -535,6 +533,7 @@ call plug#end()
 
 " {{{ Post process
 if index(g:bundle_groups, 'airline') >= 0
+    " TODO(meijieru): move to airline.vim
     if exists("g:asyncrun_status")
         let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
     endif
