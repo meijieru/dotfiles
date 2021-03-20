@@ -92,6 +92,8 @@ if index(g:bundle_groups, 'basic') >= 0
     LoadScript site/bundle/leaderf.vim
 
     Plug 'mhinz/vim-startify'
+    Plug 'machakann/vim-highlightedyank'
+
     Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
     Plug 'skywind3000/vim-terminal-help'
     Plug 'skywind3000/asynctasks.vim'
@@ -119,6 +121,11 @@ if index(g:bundle_groups, 'basic') >= 0
         autocmd  FileType which_key  :setl foldlevel=20 foldcolumn=0
     augroup end
 
+    " vim-highlightedyank
+    if !exists('##TextYankPost')
+        map y <Plug>(highlightedyank)
+    endif
+    
     " asynctasks
     let g:asynctasks_term_reuse = 1
     let g:asynctasks_term_pos = 'tab'
