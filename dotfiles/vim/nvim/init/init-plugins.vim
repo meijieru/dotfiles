@@ -155,7 +155,14 @@ if index(g:bundle_groups, 'basic') >= 0
     " nnoremap <silent> <F6> :AsyncRun -cwd=<root>/build -raw make runtest <cr>
     " nnoremap <silent> <F7> :AsyncRun -cwd=<root>/build -raw make run <cr>
     nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
-    command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+    if index(g:bundle_groups, 'vcs') >= 0
+        " https://github.com/skywind3000/asyncrun.vim/wiki/Cooperate-with-famous-plugins#fugitive
+        command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+        command! -bang -bar -nargs=* Gpush execute 'AsyncRun<bang> -cwd=' .
+                    \ fnameescape(FugitiveGitDir()) 'git push' <q-args>
+        command! -bang -bar -nargs=* Gfetch execute 'AsyncRun<bang> -cwd=' .
+                    \ fnameescape(FugitiveGitDir()) 'git fetch' <q-args>
+    endif
 
     " vim-cpp-enhanced-highlight
     let g:cpp_class_scope_highlight = 1
@@ -205,6 +212,8 @@ if index(g:bundle_groups, 'high') >= 0
     Plug 'skywind3000/gutentags_plus'
     Plug 'SirVer/ultisnips'
     Plug 'lervag/vimtex', { 'for': ['tex'] }
+
+    Plug 'psliwka/vim-smoothie'
 
     " vim-autoformat
     let g:formatdef_clangformat = '"clang-format -style=google"'
@@ -465,6 +474,16 @@ if index(g:bundle_groups, 'vcs') >= 0
 endif
 " }}} bundle group: vcs
 
+" {{{ bundle group: bufferline
+if index(g:bundle_groups, 'bufferline') >= 0
+    if has('nvim')
+        Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
+        " Plug 'ryanoasis/vim-devicons' Icons without colours
+        Plug 'akinsho/nvim-bufferline.lua'
+    endif
+endif
+" }}} bundle group: bufferline
+
 " {{{ bundle group: airline
 if index(g:bundle_groups, 'airline') >= 0
     Plug 'vim-airline/vim-airline'
@@ -532,9 +551,17 @@ if index(g:bundle_groups, 'auxlib') >= 0
         autocmd QuickFixCmdPost *grep* cwindow
     augroup end
 
-    nnoremap <leader>gg :call auxlib#mygrep()<cr>
+    " nnoremap <leader>gg :call auxlib#mygrep()<cr>
     nnoremap <Leader>te :call auxlib#toggle_loclist()<cr>
 endif
 " }}} bundle group: auxlib
+
+" {{{ bundle group: bufferline
+if index(g:bundle_groups, 'bufferline') >= 0
+    if has('nvim')
+        lua require'bufferline'.setup{}
+    endif
+endif
+" }}} bundle group: bufferline
 
 " }}} Post process
