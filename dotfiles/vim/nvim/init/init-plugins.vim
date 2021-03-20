@@ -2,9 +2,7 @@ scriptencoding utf-8
 
 " TODO(meijieru):
 " 1. `~` for returning to project root
-" config terminal
 " optimize key mapping
-" config linuxbrew
 
 " Install vim-plug if we don't already have it
 if empty(glob(g:runtime_root . 'autoload/plug.vim'))
@@ -180,6 +178,12 @@ endif
 
 " {{{ bundle group: high
 if index(g:bundle_groups, 'high') >= 0
+    " indent: ii/ai
+    " syntax: iy/ay
+    " function: if/af
+    " python: if/af, ic/ac
+    " url: iu/au
+    " parameter: i,/a,
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-indent'
     Plug 'kana/vim-textobj-syntax'
@@ -425,7 +429,7 @@ if index(g:bundle_groups, 'lsp') >= 0
     nnoremap <silent> <leader>gr :call LanguageClient_textDocument_references()<CR>
 endif
 " }}} bundle group: lsp
-"
+
 " {{{ bundle group: coc
 if index(g:bundle_groups, 'coc') >= 0
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -524,6 +528,7 @@ if index(g:bundle_groups, 'auxlib') >= 0
 
     augroup auxlib
         autocmd!
+        " https://stackoverflow.com/a/23668543/4453332
         autocmd QuickFixCmdPost *grep* cwindow
     augroup end
 
