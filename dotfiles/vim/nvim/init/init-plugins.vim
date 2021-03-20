@@ -54,6 +54,8 @@ if index(g:bundle_groups, 'simple') >= 0
 
     " auto-pairs
     let g:AutoPairsMapCh = 0 " Interfere with <left>
+    " TODO(meijieru): fix compat with my_custom_cr()
+    let g:AutoPairsMapCR = 0
     augroup auto_pair_clean
         autocmd!
         autocmd VimEnter,BufEnter,BufWinEnter * silent! iunmap <buffer> <M-">
@@ -426,66 +428,8 @@ endif
 "
 " {{{ bundle group: coc
 if index(g:bundle_groups, 'coc') >= 0
-    if has('nvim')
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    else
-        Plug 'neoclide/vim-node-rpc'
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    endif
-    let g:coc_global_extensions = [
-        \ 'coc-python',
-        \ 'coc-vimlsp',
-        \ 'coc-vimtex',
-        \ 'coc-highlight',
-        \ 'coc-json',
-        \ 'coc-yaml',
-        \ 'coc-ultisnips',
-        \ ]
-
-    " Smaller updatetime for CursorHold & CursorHoldI
-    set updatetime=300
-    let g:airline#extensions#coc#enabled = 0
-
-    nmap <silent>gd <Plug>(coc-definition)
-    nmap <silent>gy <Plug>(coc-type-definition)
-    nmap <silent>gi <Plug>(coc-implementation)
-    nmap <silent>gr <Plug>(coc-references)
-    nmap <leader>rn <Plug>(coc-rename)
-    " nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
-    " nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
-    inoremap <silent><expr> <c-space> coc#refresh()
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-    " Coc only does snippet and additional edit on confirm.
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-    " position. Coc only does snippet and additional edit on confirm.
-    " if exists('*complete_info')
-    if v:false  " FIXME(meijieru)
-        inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : \<C-g>u\<CR>"
-    else
-        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    endif
-
-    " Use K for show documentation in preview window
-    function! s:show_documentation()
-        if (index(['vim','help'], &filetype) >= 0)
-            execute 'h '.expand('<cword>')
-        else
-            call CocAction('doHover')
-        endif
-    endfunction
-    nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-    augroup coc
-        " no folding for hover
-        autocmd User CocOpenFloat :setl foldlevel=20 foldcolumn=0
-        " Highlight symbol under cursor on CursorHold
-        autocmd CursorHold * if exists('*CocActionAsync') | call CocActionAsync('highlight') | endif
-    augroup end
-
-    " Remap for format selected region
-    " vmap <leader>f  <Plug>(coc-format-selected)
-    " nmap <leader>f  <Plug>(coc-format-selected)
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    LoadScript site/bundle/coc.vim
 endif
 " }}} bundle group: coc
 
