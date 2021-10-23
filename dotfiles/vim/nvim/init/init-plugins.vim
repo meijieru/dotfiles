@@ -469,7 +469,7 @@ if index(g:bundle_groups, 'vcs') >= 0
     Plug 'mhinz/vim-signify'
 
     nnoremap <leader>gl :Git lg<CR>
-    nnoremap <leader>gs :Gstatus<CR>
+    nnoremap <leader>gs :Git<CR>
     nnoremap <leader>gv :Gvdiff<CR>
 endif
 " }}} bundle group: vcs
