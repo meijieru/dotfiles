@@ -42,7 +42,7 @@ set nrformats=
 
 " theme
 set termguicolors
-set background=light
+set background=dark
 colorscheme gruvbox
 
 " visual enhance
